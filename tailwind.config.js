@@ -1,0 +1,75 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  darkMode: 'class',
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      colors: {
+        // Core Royal Blue Redesign Palette (Section 2)
+        royal: '#173B70',
+        midnight: '#0C1D38',
+        gold: '#C5A15A',
+        champagne: '#E9D8B5',
+        ivory: '#FAF8F2',
+        white: '#FFFFFF',
+        ink: '#17243A',
+        muted: '#6F7480',
+        'border-subtle': '#E7E1D6',
+
+        // Semantic aliases mapped strictly to Royal Blue & Antique Gold (Zero Green)
+        primary: '#173B70',
+        'primary-container': '#0C1D38',
+        'on-primary': '#FFFFFF',
+        'primary-fixed-dim': '#E9D8B5',
+        secondary: '#C5A15A',
+        'secondary-container': '#E9D8B5',
+        'on-secondary': '#0C1D38',
+        'on-secondary-container': '#17243A',
+        'secondary-fixed': '#E9D8B5',
+        surface: '#FAF8F2',
+        'surface-container-lowest': '#FFFFFF',
+        'surface-container-low': '#F4F0E6',
+        'surface-container': '#EFEAE0',
+        'surface-container-high': '#E7E1D6',
+        'on-surface': '#17243A',
+        'on-surface-variant': '#6F7480',
+        outline: '#6F7480',
+        'outline-variant': '#E7E1D6',
+        error: '#9E2A2B',
+        'error-container': '#F9E6E6',
+        'on-error-container': '#6E1819',
+      },
+      borderRadius: {
+        none: '0px',
+        sm: '2px',
+        DEFAULT: '4px',
+        md: '6px',
+        lg: '8px',
+        xl: '10px',
+        full: '9999px',
+      },
+      boxShadow: {
+        subtle: '0 2px 14px rgba(12, 29, 56, 0.04)',
+        elevated: '0 14px 36px rgba(12, 29, 56, 0.08)',
+        modal: '0 24px 56px rgba(12, 29, 56, 0.22)',
+      },
+      fontFamily: {
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        // Section 3 Restrained Typography Scale
+        'hero-desktop': ['68px', { lineHeight: '1.08', letterSpacing: '-0.015em', fontWeight: '500' }],
+        'hero-mobile': ['42px', { lineHeight: '1.12', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'section-desktop': ['40px', { lineHeight: '1.16', letterSpacing: '-0.01em', fontWeight: '500' }],
+        'section-mobile': ['30px', { lineHeight: '1.2', letterSpacing: '-0.005em', fontWeight: '500' }],
+        'title-lg': ['24px', { lineHeight: '1.3', letterSpacing: '0em', fontWeight: '500' }],
+        'body-base': ['16px', { lineHeight: '1.65', letterSpacing: '0em', fontWeight: '400' }],
+        'body-sm': ['14px', { lineHeight: '1.6', letterSpacing: '0.005em', fontWeight: '400' }],
+        nav: ['13.5px', { lineHeight: '1.4', letterSpacing: '0.04em', fontWeight: '400' }],
+        eyebrow: ['11px', { lineHeight: '1.4', letterSpacing: '0.18em', fontWeight: '500' }],
+      },
+    },
+  },
+  plugins: [],
+};

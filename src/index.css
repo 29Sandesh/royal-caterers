@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior-x: none;
+    background-color: #FAF8F2;
+    color: #000000;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #000000;
+    font-weight: 700;
+  }
+
+  /* Accessible keyboard focus ring in Antique Gold (#C5A15A) */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [role='button']:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #173B70;
+    outline-offset: 2px;
+  }
+}
+
+/* Explicit utility & typography classes to guarantee immediate rendering */
+.font-cursive {
+  font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
+  font-weight: 400;
+}
+
+.font-serif-italic {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.bg-ivory {
+  background-color: #FAF8F2 !important;
+}
+
+.bg-champagne {
+  background-color: #EFE5CE !important;
+}
+
+.bg-gold {
+  background-color: #D4AF37 !important;
+}
+
+.bg-royal-tint {
+  background-color: #EDF2F8 !important;
+}
+
+.text-ink {
+  color: #000000 !important;
+}
+
+.text-muted {
+  color: #1F2937 !important;
+}
+
+.text-royal {
+  color: #112D57 !important;
+}
+
+.text-gold-dark {
+  color: #7A5C12 !important;
+}
+
+.border-subtle {
+  border-color: #DCD3C2 !important;
+}
+
+.btn-royal-gold {
+  background-color: #D4AF37 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #173B70 !important;
+  transition: all 200ms ease;
+}
+
+.btn-royal-gold:hover {
+  background-color: #E5C354 !important;
+  color: #000000 !important;
+  box-shadow: 0 6px 18px rgba(23, 59, 112, 0.16);
+}
+
+.btn-royal-outline {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #173B70 !important;
+  transition: all 200ms ease;
+}
+
+.btn-royal-outline:hover {
+  background-color: #EFE5CE !important;
+  color: #000000 !important;
+}
+
+/* Woven ceremonial carpet texture for the Royal Welcome reveal */
+.carpet-weave {
+  background-color: #173B70;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.04) 0px,
+      rgba(255, 255, 255, 0.04) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at center, #1C4582 0%, #143361 65%, #0F274B 100%);
+}
+
+/* Hide scrollbars only on horizontal filter strips */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSubtle {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.92;
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-skeleton {
+  animation: pulseSubtle 1.6s ease-in-out infinite;
+}
+
+/* Respect user reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
