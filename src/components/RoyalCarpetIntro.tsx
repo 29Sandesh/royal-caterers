@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BRAND_ASSETS, assetUrl } from '../data/siteData';
 
 export type CarpetPhase = 'closed' | 'opening' | 'done';
 
@@ -7,12 +8,9 @@ interface RoyalCarpetIntroProps {
 }
 
 /**
- * Royal Curtain-Opening Welcome Animation ("A Royal Welcome").
- *
- * - Plays fresh on every browser page load / refresh (no sessionStorage suppression).
- * - Features full-screen Left & Right pleated Royal Blue & Champagne-Gold palace curtains.
- * - Displays the website name ("ROYAL CATERERS INDIA") in a central Warm Ivory & Gold plaque.
- * - Smoothly parts the Left curtain to the left and Right curtain to the right to reveal the website.
+ * Royal Velvet Palace Curtain Reveal Animation.
+ * Features Imperial Purple (#4A2366 / #692C90) pleated palace curtains with
+ * gold brocade borders and the official Royal Caterers India (RCI) heritage plaque.
  */
 export const RoyalCarpetIntro: React.FC<RoyalCarpetIntroProps> = ({ onPhaseChange }) => {
   const [phase, setPhase] = useState<CarpetPhase>(() => {
@@ -29,12 +27,12 @@ export const RoyalCarpetIntro: React.FC<RoyalCarpetIntroProps> = ({ onPhaseChang
   useEffect(() => {
     if (phase === 'done') return;
 
-    // Hold closed briefly so the centered website name is clearly read, then part curtains left & right
+    // Hold closed briefly so the centered brand emblem is enjoyed, then part curtains
     const tOpen = window.setTimeout(() => {
       setPhase('opening');
     }, 850);
 
-    // Unmount completely after the curtains have swept off-screen left & right
+    // Unmount completely after curtains sweep off-screen
     const tDone = window.setTimeout(() => {
       setPhase('done');
     }, 2450);
@@ -51,16 +49,16 @@ export const RoyalCarpetIntro: React.FC<RoyalCarpetIntroProps> = ({ onPhaseChang
 
   const isOpening = phase === 'opening';
 
-  // Realistic vertical velvet curtain pleat shading in Royal Blue (#173B70 / #0E2547) & Champagne Gold
+  // Realistic vertical velvet curtain pleat shading in Imperial Purple (#4A2366 / #692C90)
   const curtainPleatStyle: React.CSSProperties = {
     backgroundImage: `
       repeating-linear-gradient(
         90deg,
-        #0E2547 0px,
-        #173B70 28px,
-        #214D8F 48px,
-        #13315E 72px,
-        #0B1E3B 96px
+        #2D133E 0px,
+        #4A2366 28px,
+        #692C90 48px,
+        #3D1954 72px,
+        #240D33 96px
       )
     `,
   };
@@ -71,14 +69,14 @@ export const RoyalCarpetIntro: React.FC<RoyalCarpetIntroProps> = ({ onPhaseChang
       aria-hidden="true"
       className="fixed inset-0 z-50 pointer-events-none overflow-hidden flex items-stretch justify-between"
     >
-      {/* Top Royal Valance / Pelmet Trim */}
+      {/* Top Royal Pelmet Trim in Gold & Imperial Purple */}
       <div
-        className={`absolute top-0 left-0 right-0 h-5 z-30 border-b-2 border-[#D4AF37] transition-transform duration-700 ease-in-out ${
+        className={`absolute top-0 left-0 right-0 h-6 z-30 border-b-2 border-[#F1A91E] transition-transform duration-700 ease-in-out ${
           isOpening ? '-translate-y-full' : 'translate-y-0'
         }`}
         style={{
-          background: 'linear-gradient(90deg, #0E2547 0%, #173B70 50%, #0E2547 100%)',
-          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.45)',
+          background: 'linear-gradient(90deg, #2D133E 0%, #692C90 50%, #2D133E 100%)',
+          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.55)',
         }}
       />
 
@@ -90,15 +88,12 @@ export const RoyalCarpetIntro: React.FC<RoyalCarpetIntroProps> = ({ onPhaseChang
           transitionDuration: '1450ms',
           transitionTimingFunction: 'cubic-bezier(0.65, 0, 0.25, 1)',
         }}
-        className={`relative w-1/2 h-full border-r-4 border-[#D4AF37] shadow-[18px_0_45px_rgba(0,0,0,0.55)] transition-transform ${
+        className={`relative w-1/2 h-full border-r-4 border-[#F1A91E] shadow-[18px_0_45px_rgba(0,0,0,0.65)] transition-transform ${
           isOpening ? '-translate-x-full' : 'translate-x-0'
         }`}
       >
-        {/* Warm Champagne-Gold Inner Brocade Trim along the parting edge */}
-        <div className="absolute inset-y-0 right-0 w-6 sm:w-10 bg-gradient-to-l from-[#EFE5CE]/90 via-[#D4AF37]/40 to-transparent border-l border-[#D4AF37]/60" />
-        <div className="absolute inset-y-0 right-2.5 w-[1.5px] bg-[#173B70]" />
-        {/* Subtle Horizontal Gold Cord Accent */}
-        <div className="absolute inset-x-0 bottom-10 h-[2px] bg-[#D4AF37]/65" />
+        <div className="absolute inset-y-0 right-0 w-8 sm:w-12 bg-gradient-to-l from-[#F1A91E]/50 via-[#D8D0B9]/30 to-transparent border-l border-[#F1A91E]/60" />
+        <div className="absolute inset-y-0 right-3 w-[1.5px] bg-[#F1A91E]" />
       </div>
 
       {/* RIGHT CURTAIN — Sweeps Right */}
@@ -109,36 +104,55 @@ export const RoyalCarpetIntro: React.FC<RoyalCarpetIntroProps> = ({ onPhaseChang
           transitionDuration: '1450ms',
           transitionTimingFunction: 'cubic-bezier(0.65, 0, 0.25, 1)',
         }}
-        className={`relative w-1/2 h-full border-l-4 border-[#D4AF37] shadow-[-18px_0_45px_rgba(0,0,0,0.55)] transition-transform ${
+        className={`relative w-1/2 h-full border-l-4 border-[#F1A91E] shadow-[-18px_0_45px_rgba(0,0,0,0.65)] transition-transform ${
           isOpening ? 'translate-x-full' : 'translate-x-0'
         }`}
       >
-        {/* Warm Champagne-Gold Inner Brocade Trim along the parting edge */}
-        <div className="absolute inset-y-0 left-0 w-6 sm:w-10 bg-gradient-to-r from-[#EFE5CE]/90 via-[#D4AF37]/40 to-transparent border-r border-[#D4AF37]/60" />
-        <div className="absolute inset-y-0 left-2.5 w-[1.5px] bg-[#173B70]" />
-        {/* Subtle Horizontal Gold Cord Accent */}
-        <div className="absolute inset-x-0 bottom-10 h-[2px] bg-[#D4AF37]/65" />
+        <div className="absolute inset-y-0 left-0 w-8 sm:w-12 bg-gradient-to-r from-[#F1A91E]/50 via-[#D8D0B9]/30 to-transparent border-r border-[#F1A91E]/60" />
+        <div className="absolute inset-y-0 left-3 w-[1.5px] bg-[#F1A91E]" />
       </div>
 
-      {/* CENTER WEBSITE NAME PLAQUE — Positioned Right in the Middle */}
+      {/* CENTER HERITAGE PLAQUE */}
       <div
-        className={`absolute inset-0 z-40 flex items-center justify-center px-5 transition-all duration-700 ease-out ${
-          isOpening ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
+        className={`absolute inset-0 z-40 flex items-center justify-center p-4 transition-all duration-700 ease-out ${
+          isOpening ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
         }`}
       >
-        <div className="bg-[#FAF8F2] border-2 border-[#D4AF37] outline outline-4 outline-[#173B70] px-8 sm:px-14 py-8 sm:py-10 rounded-sm shadow-[0_24px_60px_rgba(0,0,0,0.65)] text-center flex flex-col items-center max-w-lg w-full">
-          <span className="font-cursive text-[32px] sm:text-[38px] text-[#173B70] leading-none mb-2">
-            A Royal Welcome
+        <div className="relative px-8 py-9 sm:px-14 sm:py-11 bg-[#F6F1E6] border-2 border-[#F1A91E] rounded-md shadow-2xl flex flex-col items-center text-center max-w-md w-full">
+          {/* Inner Double Gold Border */}
+          <div className="absolute inset-2 border border-[#692C90]/30 rounded-sm pointer-events-none" />
+
+          {/* Official Cloche Logomark */}
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] flex items-center justify-center p-3 mb-4 shadow-lg">
+            <img
+              src={assetUrl(BRAND_ASSETS.logomarkWhite)}
+              alt="RCI Royal Emblem"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          <span className="font-didot italic text-[13px] text-[#692C90] font-semibold tracking-widest uppercase mb-1">
+            Where Tradition Meets Taste
           </span>
 
-          <div className="w-16 h-[2px] bg-[#D4AF37] mb-4" />
+          <h2 className="font-trajan text-[22px] sm:text-[26px] font-extrabold text-[#4A2366] tracking-[0.2em] uppercase leading-tight">
+            ROYAL CATERERS
+          </h2>
 
-          <span className="font-serif text-[28px] sm:text-[40px] font-bold tracking-[0.18em] text-black uppercase leading-tight">
-            ROYAL CATERERS INDIA
-          </span>
+          <div className="flex items-center gap-3 my-2 w-full justify-center">
+            <span className="w-10 h-[1.5px] bg-[#F1A91E]" />
+            <span className="font-didot italic text-[13px] text-[#2B2B2B] font-semibold tracking-wider">
+              India &middot; Since 1960
+            </span>
+            <span className="w-10 h-[1.5px] bg-[#F1A91E]" />
+          </div>
 
-          <span className="font-sans text-[11px] sm:text-[12px] font-bold tracking-[0.3em] text-black uppercase mt-3">
-            PARDESIPURA &middot; INDORE
+          <p className="font-cursive text-[24px] text-[#692C90] mt-1">
+            we serve taste of life
+          </p>
+
+          <span className="mt-4 px-3 py-1 bg-[#4A2366] text-[#F1A91E] font-trajan text-[10px] font-bold tracking-[0.25em] uppercase rounded-full">
+            Indore &middot; Pure Vegetarian
           </span>
         </div>
       </div>

@@ -1,24 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MENU_CATEGORIES, MenuCategoryData } from '../data/siteData';
+import { MENU_CATEGORIES, MenuCategoryData, BUSINESS_INFO, BRAND_ASSETS, assetUrl } from '../data/siteData';
 import { RoyalImage } from '../components/RoyalImage';
 
 const CATEGORY_TABS = [
   { key: 'all', label: 'All Courses' },
-  { key: 'cat-drinks', label: 'Welcome Drinks & Beverages' },
-  { key: 'cat-starters', label: 'Starters & Appetisers' },
+  { key: 'cat-drinks', label: 'Welcome Drinks & Coolers' },
+  { key: 'cat-starters', label: 'Starters & Tandoor' },
   { key: 'cat-mains', label: 'Indian Main Course' },
-  { key: 'cat-rice', label: 'Rice & Biryani' },
+  { key: 'cat-rice', label: 'Basmati & Biryani' },
   { key: 'cat-breads', label: 'Indian Breads' },
-  { key: 'cat-live', label: 'Live Food Counters' },
-  { key: 'cat-desserts', label: 'Desserts & Sweets' },
-  { key: 'cat-special', label: 'Special Menu Options' },
+  { key: 'cat-live', label: 'Live Street Food Counters' },
+  { key: 'cat-desserts', label: 'Mithai & Desserts' },
+  { key: 'cat-special', label: 'Malwi & Special Feasts' },
+];
+
+// Official Client Signature Menu from client's brand PDF ("a Artboard 1 copy.pdf")
+const CLIENT_SIGNATURE_MENU_ITEMS = [
+  { number: '1', name: 'Veg Chowmein', category: 'Live Pan-Asian Wok Counter' },
+  { number: '2', name: 'Butter Pav Bhaji', category: 'Sarafa Live Street Counter' },
+  { number: '3', name: 'Shahi Paneer Gravy', category: 'Royal Main Course' },
+  { number: '4', name: 'Dum Aloo Kashmiri', category: 'Clay Handi Preparation' },
+  { number: '5', name: 'Dal Tadka (Desi Ghee)', category: 'Heritage Lentil Course' },
+  { number: '6', name: 'Steamed Basmati Rice', category: 'Aged Long Grain Rice' },
+  { number: '7', name: 'Indian Tandoori Breads', category: 'Naan, Paratha & Roti' },
+  { number: '8', name: 'Spongy Kolkata Rasgulla', category: 'Mithai Pavilion' },
 ];
 
 /**
- * Menu Page — Clean and Image-Led (Section 9).
- * Features 4K Unsplash food photography, Bold Black dish names & headings,
- * cursive subheadings, and high-contrast buttons.
+ * Menu Page — Royal Caterers India (RCI).
+ * Features the complete 8-course pure vegetarian repertoire,
+ * client signature set menu, and WhatsApp / quote consultation.
  */
 export const MenuPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -40,45 +52,120 @@ export const MenuPage: React.FC = () => {
   }, [pdfModalOpen]);
 
   return (
-    <div className="flex flex-col w-full bg-[#FAF8F2] text-black">
-      {/* 1. Editorial Header */}
-      <section className="w-full bg-[#FAF8F2] pt-12 pb-12 lg:py-20 border-b border-[#DCD3C2]">
+    <div className="flex flex-col w-full bg-[#F6F1E6] text-[#2B2B2B]">
+      {/* 1. Header */}
+      <section className="w-full bg-[#F6F1E6] pt-10 pb-12 lg:py-20 border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-[2px] bg-[#173B70]" aria-hidden="true" />
-                <span className="font-sans text-[11.5px] font-bold uppercase tracking-[0.22em] text-black">
-                  ILLUSTRATIVE CULINARY REPERTOIRE
+                <span className="w-8 h-[2px] bg-[#692C90]" aria-hidden="true" />
+                <span className="font-trajan text-[11.5px] font-bold uppercase tracking-[0.22em] text-[#692C90]">
+                  100% PURE VEGETARIAN &middot; JAIN &middot; SATTVIQ
                 </span>
               </div>
-              <p className="font-cursive text-[32px] text-[#173B70] mb-1">
-                Pure Vegetarian, Malwi &amp; Jain Gastronomy
+              <p className="font-cursive text-[34px] text-[#692C90] mb-1">
+                Where Tradition Meets Taste
               </p>
-              <h1 className="font-serif text-[42px] sm:text-[52px] lg:text-[62px] text-black font-bold leading-[1.1] mb-4">
-                A Menu for Every Occasion.
+              <h1 className="font-didot text-[40px] sm:text-[52px] lg:text-[62px] text-[#4A2366] font-bold leading-[1.1] mb-4">
+                Regal Menus For Grand Celebrations.
               </h1>
-              <p className="font-sans text-[16px] text-black font-medium leading-relaxed">
-                Explore sample vegetarian, regional Malwi, and pure Jain selections across eight
-                signature courses. Every event menu is individually curated during consultation.
+              <p className="font-sans text-[15.5px] text-[#2B2B2B]/85 font-normal leading-relaxed">
+                Explore our illustrative culinary repertoire across eight courses. Every celebration menu
+                is custom-tailored with pure desi ghee, seasonal produce, and authentic Indore spices.
               </p>
             </div>
 
-            <div className="shrink-0">
+            <div className="flex flex-wrap items-center gap-3.5 shrink-0">
+              <a
+                href={BUSINESS_INFO.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3.5 bg-white border border-[#4DAF4E] text-[#2D6A2E] text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm hover:bg-[#FAF7F0] transition-colors"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#4DAF4E]" />
+                <span>WhatsApp Menu Inquiry</span>
+              </a>
               <Link
                 to="/contact-booking"
                 data-path="contact-booking"
-                className="inline-flex items-center justify-center px-7 py-3.5 btn-royal-gold text-[12px] font-bold uppercase tracking-[0.16em] rounded-sm"
+                className="inline-flex items-center justify-center px-7 py-3.5 btn-royal-gold text-[12px] font-extrabold uppercase tracking-[0.16em] rounded-sm"
               >
-                Request a Custom Menu
+                Request Custom Menu
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Compact Category Navigation in Bold Black */}
-      <div className="sticky top-20 z-30 bg-white border-b border-[#DCD3C2]">
+      {/* 2. OFFICIAL CLIENT SIGNATURE SET BANQUET (From client's PDF menu) */}
+      <section className="w-full bg-[#FAF7F0] py-12 border-b border-[#D8D0B9]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="bg-white border-2 border-[#F1A91E] rounded-md p-6 sm:p-8 lg:p-10 shadow-royal relative overflow-hidden">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#D8D0B9]">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 flex items-center justify-center shrink-0">
+                  <img
+                    src={assetUrl(BRAND_ASSETS.logomarkWhite)}
+                    alt="RCI Logo"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div>
+                  <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.2em] text-[#692C90] block">
+                    ROYAL CATERERS INDIA &middot; SINCE 1960
+                  </span>
+                  <h2 className="font-didot text-[26px] sm:text-[32px] text-[#4A2366] font-bold">
+                    Classic 8-Course Royal Feast Menu
+                  </h2>
+                </div>
+              </div>
+              <span className="px-3.5 py-1.5 bg-[#4A2366] text-[#F1A91E] font-trajan text-[11px] font-bold uppercase tracking-widest rounded-full self-start lg:self-auto">
+                Signature Popular Choice
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 pt-7">
+              {CLIENT_SIGNATURE_MENU_ITEMS.map((dish) => (
+                <div
+                  key={dish.number}
+                  className="p-4 rounded-sm border border-[#D8D0B9]/80 bg-[#F6F1E6]/50 flex flex-col justify-between"
+                >
+                  <div>
+                    <span className="font-trajan text-[11px] font-bold text-[#692C90]">
+                      0{dish.number}.
+                    </span>
+                    <h3 className="font-didot text-[18px] font-bold text-[#4A2366] mt-0.5">
+                      {dish.name}
+                    </h3>
+                  </div>
+                  <span className="font-sans text-[11px] text-[#2B2B2B]/70 font-semibold uppercase tracking-wider mt-2 block">
+                    {dish.category}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="pt-6 mt-6 border-t border-[#D8D0B9]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-[#2B2B2B]/80 font-medium">
+              <p>
+                Ph: <strong className="text-[#4A2366]">{BUSINESS_INFO.phoneDisplay}</strong> &middot;{' '}
+                {BUSINESS_INFO.domain}
+              </p>
+              <button
+                type="button"
+                onClick={() => setPdfModalOpen(true)}
+                className="inline-flex items-center gap-1.5 text-[#692C90] font-bold hover:underline"
+              >
+                <span>Print &middot; Download Course Summary</span>
+                <span>&rarr;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Compact Category Filter Tabs */}
+      <div className="sticky top-20 z-30 bg-white border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div
             id="categoryTabs"
@@ -94,16 +181,17 @@ export const MenuPage: React.FC = () => {
                   type="button"
                   role="tab"
                   aria-selected={active}
-                  data-cat={tab.key}
                   onClick={() => setSelectedCategory(tab.key)}
                   className={`category-btn relative shrink-0 pb-1.5 text-[13.5px] tracking-wide transition-colors ${
-                    active ? 'active text-black font-bold' : 'text-black/75 font-semibold hover:text-black'
+                    active
+                      ? 'active text-[#4A2366] font-bold'
+                      : 'text-[#2B2B2B]/75 font-semibold hover:text-[#692C90]'
                   }`}
                 >
                   {tab.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute bottom-0 left-0 right-0 h-[2px] bg-[#173B70] transition-transform duration-300 origin-left ${
+                    className={`absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#692C90] transition-transform duration-300 origin-left ${
                       active ? 'scale-x-100' : 'scale-x-0'
                     }`}
                   />
@@ -114,7 +202,7 @@ export const MenuPage: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. Eight Menu Categories — Clean & 4K Image-Led */}
+      {/* 4. Eight Menu Categories Cards */}
       <section className="w-full py-16 lg:py-24">
         <div
           id="menuCardsContainer"
@@ -126,16 +214,12 @@ export const MenuPage: React.FC = () => {
               <article
                 key={cat.key}
                 data-category={cat.key}
-                className="menu-section-card bg-white border border-[#DCD3C2] rounded-sm p-6 sm:p-10 lg:p-12 shadow-subtle animate-fadeIn"
+                className="menu-section-card bg-white border border-[#D8D0B9] rounded-md p-6 sm:p-10 lg:p-12 shadow-subtle animate-fadeIn"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                  {/* 4K Category Food Photograph */}
-                  <div
-                    className={`lg:col-span-5 ${
-                      isEven ? 'lg:order-1' : 'lg:order-2'
-                    }`}
-                  >
-                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm border border-[#DCD3C2] bg-[#FAF8F2]">
+                  {/* Category Image */}
+                  <div className={`lg:col-span-5 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
+                    <div className="relative w-full aspect-[4/3] overflow-hidden rounded-md border border-[#D8D0B9] bg-[#F6F1E6]">
                       <RoyalImage
                         priority={idx < 2}
                         src={cat.image}
@@ -146,20 +230,16 @@ export const MenuPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Concise Dish List in Bold Black */}
-                  <div
-                    className={`lg:col-span-7 flex flex-col ${
-                      isEven ? 'lg:order-2' : 'lg:order-1'
-                    }`}
-                  >
-                    <div className="pb-5 mb-6 border-b border-[#DCD3C2]">
-                      <span className="font-sans text-[11.5px] font-bold uppercase tracking-[0.2em] text-[#173B70] block mb-1">
+                  {/* Dish List */}
+                  <div className={`lg:col-span-7 flex flex-col ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
+                    <div className="pb-5 mb-6 border-b border-[#D8D0B9]">
+                      <span className="font-trajan text-[11.5px] font-bold uppercase tracking-[0.2em] text-[#692C90] block mb-1">
                         Course {cat.number}
                       </span>
-                      <h2 className="font-serif text-[30px] sm:text-[36px] text-black font-bold mb-1.5">
+                      <h2 className="font-didot text-[30px] sm:text-[36px] text-[#4A2366] font-bold mb-1.5">
                         {cat.title}
                       </h2>
-                      <p className="font-sans text-[15px] text-black font-medium">
+                      <p className="font-sans text-[15px] text-[#2B2B2B]/80 font-medium">
                         {cat.subtitle}
                       </p>
                     </div>
@@ -168,13 +248,13 @@ export const MenuPage: React.FC = () => {
                       {cat.items.map((dish) => (
                         <li
                           key={dish.name}
-                          className="flex items-center justify-between gap-3 py-1.5 border-b border-[#DCD3C2]/80"
+                          className="flex items-center justify-between gap-3 py-1.5 border-b border-[#D8D0B9]/60"
                         >
-                          <span className="font-sans text-[15px] text-black font-bold">
+                          <span className="font-sans text-[15px] text-[#2B2B2B] font-semibold">
                             {dish.name}
                           </span>
                           {dish.tag && (
-                            <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-black bg-[#EFE5CE] px-2 py-0.5 border border-[#C5A15A] rounded-sm shrink-0">
+                            <span className="font-trajan text-[10px] font-bold uppercase tracking-[0.14em] text-[#4A2366] bg-[#FAF7F0] px-2 py-0.5 border border-[#F1A91E] rounded-sm shrink-0">
                               {dish.tag}
                             </span>
                           )}
@@ -187,69 +267,49 @@ export const MenuPage: React.FC = () => {
             );
           })}
 
-          {/* Subtle Illustrative Note */}
-          <p className="text-center font-sans text-[14.5px] text-black font-semibold max-w-2xl mx-auto">
-            Note: The selections above are illustrative of our culinary repertoire. Final course
-            combinations, seasonal items, and strict Jain or Sattvic preparations are tailored to
-            your event.
+          <p className="text-center font-sans text-[14px] text-[#2B2B2B]/80 font-medium max-w-2xl mx-auto">
+            Note: All courses are prepared using pure desi ghee, fresh milk and khoya, and stone-ground
+            spices in Indore. Strict Jain (no onion, garlic, or root vegetables) options are available
+            across all stations.
           </p>
         </div>
       </section>
 
-      {/* 4. Minimal "Download Our Menu" Area */}
-      <section className="w-full bg-white py-16 lg:py-20 border-t border-[#DCD3C2]">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="border-2 border-[#C5A15A] bg-[#FAF8F2] p-8 sm:p-12 rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-            <div className="max-w-xl">
-              <p className="font-cursive text-[28px] text-[#173B70] mb-1">
-                Seasonal Course Brochure
-              </p>
-              <h2 className="font-serif text-[28px] sm:text-[34px] text-black font-bold mb-2">
-                Download Our Menu
-              </h2>
-              <p className="font-sans text-[15px] text-black font-medium leading-relaxed">
-                Preview our eight-course repertoire summary or request the official PDF brochure once
-                approved for your season.
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-4 shrink-0">
-              <button
-                id="downloadPdfBtn"
-                type="button"
-                onClick={() => setPdfModalOpen(true)}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 btn-royal-outline text-[12px] font-bold uppercase tracking-[0.15em] rounded-sm"
-              >
-                <span>Download Our Menu (PDF)</span>
-              </button>
-            </div>
+      {/* 5. Custom Menu CTA */}
+      <section className="w-full bg-[#4A2366] text-white py-20 lg:py-24">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center">
+          <p className="font-cursive text-[36px] text-[#F1A91E] mb-1">
+            Where Tradition Meets Taste
+          </p>
+          <h2 className="font-didot text-[34px] lg:text-[46px] text-white font-bold mb-4">
+            Customise Your Event Menu.
+          </h2>
+          <p className="font-sans text-[16px] text-[#F6F1E6]/85 font-normal max-w-lg mb-9">
+            Share your preferred courses and dietary requirements to receive a personalized menu proposal
+            from our Indore culinary team.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Link
+              to="/contact-booking"
+              data-path="contact-booking"
+              className="inline-flex items-center justify-center px-9 py-4 btn-royal-gold text-[12.5px] font-extrabold uppercase tracking-[0.18em] rounded-sm shadow-md"
+            >
+              Request Custom Menu
+            </Link>
+            <a
+              href={BUSINESS_INFO.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 hover:bg-white hover:text-[#4A2366] text-white font-sans text-[12px] font-bold uppercase tracking-wider rounded-sm border border-[#F1A91E]/50 transition-colors"
+            >
+              <span className="w-2.5 h-2.5 rounded-full bg-[#4DAF4E]" />
+              <span>WhatsApp Menu Consultation</span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* 5. Request a Custom Menu CTA */}
-      <section className="w-full bg-[#EFE5CE] text-black py-20 lg:py-24 border-t-2 border-[#173B70]">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center">
-          <p className="font-cursive text-[32px] text-[#173B70] mb-1">
-            Tailored for Your Palate
-          </p>
-          <h2 className="font-serif text-[34px] lg:text-[44px] text-black font-bold mb-4">
-            Curate a Menu for Your Guests.
-          </h2>
-          <p className="font-sans text-[16px] text-black font-medium max-w-lg mb-9">
-            Share your preferred courses and dietary requirements to receive a tailored menu
-            recommendation.
-          </p>
-          <Link
-            to="/contact-booking"
-            data-path="contact-booking"
-            className="inline-flex items-center justify-center px-9 py-4 btn-royal-gold text-[12.5px] font-bold uppercase tracking-[0.18em] rounded-sm"
-          >
-            Request a Custom Menu
-          </Link>
-        </div>
-      </section>
-
-      {/* Minimal Menu PDF / Printable Summary Modal */}
+      {/* Menu Printable Modal */}
       {pdfModalOpen && (
         <div
           id="pdfNotificationModal"
@@ -259,40 +319,37 @@ export const MenuPage: React.FC = () => {
           onClick={(e) => {
             if (e.target === e.currentTarget) setPdfModalOpen(false);
           }}
-          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-[2px] flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn"
         >
-          <div className="bg-[#FAF8F2] border-2 border-[#173B70] rounded-sm max-w-xl w-full p-7 sm:p-9 shadow-modal flex flex-col gap-5 text-black">
-            <div className="flex items-start justify-between gap-4 border-b border-[#DCD3C2] pb-4">
+          <div className="bg-[#F6F1E6] border-2 border-[#692C90] rounded-md max-w-xl w-full p-7 sm:p-9 shadow-modal flex flex-col gap-5 text-[#2B2B2B]">
+            <div className="flex items-start justify-between gap-4 border-b border-[#D8D0B9] pb-4">
               <div>
-                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.2em] text-[#173B70] block mb-1">
-                  Royal Caterers India
+                <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.2em] text-[#692C90] block mb-1">
+                  Royal Caterers India &middot; Since 1960
                 </span>
-                <h3
-                  id="menu-brochure-modal-title"
-                  className="font-serif text-[26px] text-black font-bold"
-                >
-                  Official Menu Brochure
+                <h3 id="menu-brochure-modal-title" className="font-didot text-[26px] text-[#4A2366] font-bold">
+                  Official Menu Repertoire
                 </h3>
               </div>
               <button
                 type="button"
                 aria-label="Close modal"
                 onClick={() => setPdfModalOpen(false)}
-                className="w-8 h-8 inline-flex items-center justify-center text-black hover:bg-[#EFE5CE] rounded-sm"
+                className="w-8 h-8 inline-flex items-center justify-center text-[#2B2B2B] hover:bg-[#D8D0B9]/40 rounded-sm"
               >
-                <span className="material-symbols-outlined text-[20px] text-black" aria-hidden="true">
+                <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                   close
                 </span>
               </button>
             </div>
 
-            <p className="font-sans text-[15px] text-black font-medium leading-relaxed">
-              The downloadable PDF menu brochure will be linked here once the final seasonal edition
-              is approved. In the meantime, you can print this course overview or request a custom
-              menu proposal directly.
+            <p className="font-sans text-[15px] text-[#2B2B2B]/90 font-normal leading-relaxed">
+              Serving celebrations in Indore since 1960. You can print this complete course overview
+              or connect with our chef directly via WhatsApp to customize portions, dietary requirements,
+              and live counter stations.
             </p>
 
-            <div className="flex flex-wrap items-center justify-end gap-3 pt-3 border-t border-[#DCD3C2]">
+            <div className="flex flex-wrap items-center justify-end gap-3 pt-3 border-t border-[#D8D0B9]">
               <button
                 type="button"
                 onClick={() => window.print()}
@@ -305,7 +362,7 @@ export const MenuPage: React.FC = () => {
                 onClick={() => setPdfModalOpen(false)}
                 className="px-6 py-2.5 btn-royal-gold text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm"
               >
-                Request a Custom Menu
+                Request Custom Menu
               </Link>
             </div>
           </div>

@@ -1,6 +1,15 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { SERVICE_OFFERINGS, MENU_CATEGORIES, GALLERY_ITEMS, EVENT_VIDEOS, VideoGalleryItem, assetUrl } from '../data/siteData';
+import {
+  SERVICE_OFFERINGS,
+  MENU_CATEGORIES,
+  GALLERY_ITEMS,
+  EVENT_VIDEOS,
+  BUSINESS_INFO,
+  BRAND_ASSETS,
+  VideoGalleryItem,
+  assetUrl,
+} from '../data/siteData';
 import { RoyalImage } from '../components/RoyalImage';
 import { VideoPlayerModal } from '../components/VideoPlayerModal';
 
@@ -19,11 +28,16 @@ const HOMEPAGE_FEATURED_VIDEOS = [
 ];
 
 /**
- * Homepage — Minimal Royal Experience ("A Royal Welcome").
- * Features real authentic event photography and live event video highlights.
+ * Homepage for Royal Caterers India (RCI).
+ * Fully aligned with client brand identity:
+ * - Theme: Imperial Purple (#4A2366 / #692C90) & Saffron Gold (#F1A91E) on Warm Ivory (#F6F1E6)
+ * - Official Tagline: "Where Tradition Meets Taste · Serving Celebrations Since 1960"
+ * - Official Emblem Sub-tagline: "we serve taste of life"
+ * - Brand Crest Showcase: 3 official concepts (Cloche Dome, Royal Crown, Handi Pot)
  */
 export const HomePage: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<VideoGalleryItem | null>(null);
+  const [activeConceptTab, setActiveConceptTab] = useState<'cloche' | 'crown' | 'handi'>('cloche');
 
   const nextVideo = useCallback(() => {
     if (!selectedVideo) return;
@@ -40,67 +54,116 @@ export const HomePage: React.FC = () => {
   }, [selectedVideo]);
 
   return (
-    <div className="flex flex-col w-full bg-[#FAF8F2] text-black">
-      {/* 1. HERO — Editorial Two-Column Layout */}
-      <section className="w-full bg-[#FAF8F2] pt-10 pb-16 lg:py-24 border-b border-[#DCD3C2]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div className="flex flex-col w-full bg-[#F6F1E6] text-[#2B2B2B]">
+      {/* 1. HERO — Editorial Imperial Purple & Ivory Two-Column Layout */}
+      <section className="w-full bg-[#F6F1E6] pt-8 pb-16 lg:py-24 border-b border-[#D8D0B9] relative overflow-hidden">
+        {/* Subtle decorative background glow */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-[#692C90]/5 blur-3xl pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-            {/* Left Column: Bold Black Typography & Cursive Subheading */}
+            {/* Left Column: Brand Identity, Tagline & Action */}
             <div className="lg:col-span-6 flex flex-col items-start">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="w-8 h-[2px] bg-[#173B70]" aria-hidden="true" />
-                <span className="font-sans text-[11.5px] font-bold uppercase tracking-[0.22em] text-black">
-                  BESPOKE CATERING &middot; INDORE
+              {/* Official Heritage Eyebrow & Google Rating */}
+              <div className="flex flex-wrap items-center gap-2.5 mb-3.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#4A2366] text-[#F1A91E] font-trajan text-[11px] font-bold tracking-[0.2em] uppercase rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#F1A91E]" />
+                  <span>Est. 1960 &middot; Indore</span>
                 </span>
+                <a
+                  href={BUSINESS_INFO.mapsHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-[#D8D0B9] text-[11px] font-bold text-[#4A2366] rounded-full hover:border-[#692C90] transition-colors"
+                >
+                  <span className="text-[#F1A91E]">★</span>
+                  <span>4.8 on Google My Business</span>
+                </a>
               </div>
 
-              <p className="font-cursive text-[30px] sm:text-[34px] text-[#173B70] mb-2">
-                A Royal Welcome to Fine Dining
+              {/* Official Tagline in Cursive script */}
+              <p className="font-cursive text-[32px] sm:text-[38px] text-[#692C90] mb-1.5 leading-snug">
+                Where Tradition Meets Taste
               </p>
 
-              <h1 className="font-serif text-[42px] sm:text-[56px] lg:text-[66px] text-black font-bold leading-[1.08] tracking-tight mb-6">
-                Every Celebration Deserves a Royal Feast.
+              {/* Main Heading in Didot serif */}
+              <h1 className="font-didot text-[40px] sm:text-[54px] lg:text-[64px] text-[#4A2366] font-bold leading-[1.08] tracking-tight mb-5">
+                Serving Celebrations Since 1960.
               </h1>
 
-              <p className="font-sans text-[16px] text-black font-medium max-w-lg leading-relaxed mb-10">
-                Thoughtfully curated pure vegetarian and regional Malwi banquets presented with
-                gracious Indian hospitality for grand weddings, leadership galas, and private celebrations.
+              {/* Brand Description & Pure Veg Stamp */}
+              <p className="font-sans text-[15.5px] sm:text-[16.5px] text-[#2B2B2B]/90 font-normal max-w-lg leading-relaxed mb-4">
+                For over six decades, Royal Caterers India (RCI) has orchestrated regal, authentic
+                pure vegetarian banquets across Indore and Central India—blending heirloom Malwi
+                flavours, lavish presentation, and gracious hospitality.
               </p>
 
-              <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8 w-full sm:w-auto">
+              {/* Emblem Sub-Tagline Quote */}
+              <p className="font-didot italic text-[14px] text-[#692C90] font-semibold mb-8 flex items-center gap-2">
+                <span className="w-6 h-[1.5px] bg-[#F1A91E]" />
+                <span>&ldquo;{BUSINESS_INFO.emblemTagline}&rdquo;</span>
+              </p>
+
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 w-full sm:w-auto">
                 <Link
                   to="/contact-booking"
                   data-path="contact-booking"
-                  className="inline-flex items-center justify-center px-8 py-4 btn-royal-gold text-[12.5px] font-bold uppercase tracking-[0.16em] rounded-sm shadow-md"
+                  className="inline-flex items-center justify-center px-8 py-4 btn-royal-gold text-[12px] font-extrabold uppercase tracking-[0.16em] rounded-sm shadow-md"
                 >
-                  Plan Your Event
+                  Book Your Event
                 </Link>
+
+                <a
+                  href={BUSINESS_INFO.whatsappHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 btn-royal-outline text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm shadow-sm"
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#4DAF4E]" />
+                  <span>Chat on WhatsApp</span>
+                </a>
+
                 <Link
                   to="/gallery"
                   data-path="gallery"
-                  className="inline-flex items-center justify-center sm:justify-start gap-2.5 py-2 text-[13px] font-bold uppercase tracking-[0.15em] text-black hover:text-[#173B70] transition-colors border-b-2 border-[#173B70] pb-1 self-center"
+                  className="inline-flex items-center justify-center sm:justify-start gap-2 py-2 text-[12.5px] font-bold uppercase tracking-[0.14em] text-[#4A2366] hover:text-[#692C90] transition-colors border-b-2 border-[#692C90] pb-0.5 self-center"
                 >
-                  <span>Watch Event Videos</span>
+                  <span>Watch Reels</span>
                   <span aria-hidden="true">&rarr;</span>
                 </Link>
               </div>
             </div>
 
-            {/* Right Column: Authentic Real Event Photo */}
-            <div className="lg:col-span-6">
-              <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] overflow-hidden rounded-sm border-2 border-[#C5A15A] bg-white shadow-elevated group">
+            {/* Right Column: Hero Real Event Media with Official Seal */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative w-full aspect-[4/3] lg:aspect-[5/4] overflow-hidden rounded-md border-2 border-[#D8D0B9] bg-white shadow-royal group">
                 <RoyalImage
                   priority
                   src="/media/photos/royal_wedding_live_buffet_stall.jpg"
-                  alt="Ornate royal wedding catering wagon and live culinary counter in Indore."
+                  alt="Royal Caterers India carved catering stall and banquet carriage in Indore."
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute bottom-4 left-4 bg-[#FAF8F2]/95 border border-[#C5A15A] px-4 py-2 rounded-sm shadow-md">
-                  <span className="font-sans text-[10px] font-bold uppercase tracking-wider text-[#173B70] block">
-                    Authentic Indore Event Setup
-                  </span>
-                  <span className="font-serif text-[17px] font-bold text-black">
-                    Ornate Royal Buffet Carriage
+
+                {/* Floating Official Heritage Seal */}
+                <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#4A2366]/95 border-2 border-[#F1A91E] p-1.5 shadow-2xl flex items-center justify-center animate-fadeUp">
+                  <img
+                    src={assetUrl(BRAND_ASSETS.emblemClocheGold)}
+                    alt="RCI 1960 Heritage Seal"
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                </div>
+
+                <div className="absolute bottom-4 left-4 right-4 bg-[#F6F1E6]/95 backdrop-blur-sm border border-[#D8D0B9] px-4 py-2.5 rounded-sm shadow-md flex items-center justify-between">
+                  <div>
+                    <span className="font-trajan text-[10px] font-bold uppercase tracking-wider text-[#692C90] block">
+                      Authentic Indore Event Setup
+                    </span>
+                    <span className="font-didot text-[16px] sm:text-[18px] font-bold text-[#4A2366]">
+                      Ornate Royal Buffet Carriage &middot; Pardesipura
+                    </span>
+                  </div>
+                  <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 bg-[#4DAF4E]/10 border border-[#4DAF4E]/30 text-[#2D6A2E] text-[10px] font-bold uppercase tracking-wider rounded">
+                    100% Pure Veg
                   </span>
                 </div>
               </div>
@@ -109,43 +172,126 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. BRAND HIGHLIGHTS — Single Elegant Horizontal Row in Bold Black */}
-      <section className="w-full bg-white py-10 lg:py-12 border-b border-[#DCD3C2]">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 md:gap-16 text-center">
-            <span className="font-serif text-[24px] md:text-[27px] text-black font-bold tracking-wide">
-              100% Pure Vegetarian
+      {/* 2. THE 3 BRAND CRESTS & LEGACY (From Official Brand Guidelines) */}
+      <section className="w-full bg-[#FFFFFF] py-14 lg:py-16 border-b border-[#D8D0B9]">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.22em] text-[#692C90] block mb-1">
+              THE ROYAL CATERERS BRAND IDENTITY
             </span>
-            <span className="hidden sm:block w-8 h-[2px] bg-[#C5A15A]" aria-hidden="true" />
-            <span className="sm:hidden w-8 h-[2px] bg-[#C5A15A]" aria-hidden="true" />
-            <span className="font-serif text-[24px] md:text-[27px] text-black font-bold tracking-wide">
-              Live Interactive Counters
-            </span>
-            <span className="hidden sm:block w-8 h-[2px] bg-[#C5A15A]" aria-hidden="true" />
-            <span className="sm:hidden w-8 h-[2px] bg-[#C5A15A]" aria-hidden="true" />
-            <span className="font-serif text-[24px] md:text-[27px] text-black font-bold tracking-wide">
-              Royal Silver Service
-            </span>
+            <h2 className="font-didot text-[28px] sm:text-[36px] text-[#4A2366] font-bold">
+              Three Royal Crests &middot; One Enduring Legacy.
+            </h2>
+            <p className="font-sans text-[14.5px] text-[#2B2B2B]/80 mt-2">
+              Every emblem reflects our dedication since 1960: from culinary dome service to royal
+              celebrations and authentic deg handis.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Crest 1: Cloche Dome & Lotus Flame */}
+            <div
+              onClick={() => setActiveConceptTab('cloche')}
+              className={`p-6 rounded-md border-2 transition-all cursor-pointer flex flex-col items-center text-center ${
+                activeConceptTab === 'cloche'
+                  ? 'border-[#692C90] bg-[#FAF7F0] shadow-md -translate-y-1'
+                  : 'border-[#D8D0B9]/60 bg-white hover:border-[#692C90]/50'
+              }`}
+            >
+              <div className="w-24 h-24 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 mb-4 shadow-md flex items-center justify-center">
+                <img
+                  src={assetUrl(BRAND_ASSETS.emblemClocheGold)}
+                  alt="Cloche Emblem"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">
+                Official Crest 01
+              </span>
+              <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mb-2">
+                Imperial Cloche &middot; Taste of Life
+              </h3>
+              <p className="font-sans text-[13px] text-[#2B2B2B]/80 leading-relaxed">
+                The royal banquet cloche with the 3-petal lotus crest, representing gourmet presentation,
+                flawless hot service, and hospitality.
+              </p>
+            </div>
+
+            {/* Crest 2: Royal Crown & Diamond Stars */}
+            <div
+              onClick={() => setActiveConceptTab('crown')}
+              className={`p-6 rounded-md border-2 transition-all cursor-pointer flex flex-col items-center text-center ${
+                activeConceptTab === 'crown'
+                  ? 'border-[#692C90] bg-[#FAF7F0] shadow-md -translate-y-1'
+                  : 'border-[#D8D0B9]/60 bg-white hover:border-[#692C90]/50'
+              }`}
+            >
+              <div className="w-24 h-24 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 mb-4 shadow-md flex items-center justify-center">
+                <img
+                  src={assetUrl(BRAND_ASSETS.emblemCrownGold)}
+                  alt="Royal Crown Emblem"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">
+                Official Crest 02
+              </span>
+              <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mb-2">
+                The Regal Crown &middot; Celebrations
+              </h3>
+              <p className="font-sans text-[13px] text-[#2B2B2B]/80 leading-relaxed">
+                The majestic royal crown with radiant four-pointed stars, celebrating grand wedding
+                ceremonies, bridal galas, and milestone feasts.
+              </p>
+            </div>
+
+            {/* Crest 3: Handi Deg & Authentic Steam */}
+            <div
+              onClick={() => setActiveConceptTab('handi')}
+              className={`p-6 rounded-md border-2 transition-all cursor-pointer flex flex-col items-center text-center ${
+                activeConceptTab === 'handi'
+                  ? 'border-[#692C90] bg-[#FAF7F0] shadow-md -translate-y-1'
+                  : 'border-[#D8D0B9]/60 bg-white hover:border-[#692C90]/50'
+              }`}
+            >
+              <div className="w-24 h-24 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 mb-4 shadow-md flex items-center justify-center">
+                <img
+                  src={assetUrl(BRAND_ASSETS.emblemHandiGold)}
+                  alt="Traditional Handi Emblem"
+                  className="w-full h-full object-contain rounded-full"
+                />
+              </div>
+              <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">
+                Official Crest 03
+              </span>
+              <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mb-2">
+                Authentic Handi &middot; Desi Ghee
+              </h3>
+              <p className="font-sans text-[13px] text-[#2B2B2B]/80 leading-relaxed">
+                The timeless Indian handi pot, honouring authentic Malwi Dal Bafla, slow-simmered
+                shahi paneer gravies, and pure ghee mithai.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. SERVICES PREVIEW — 4K Image-Led Three-Column Grid */}
-      <section className="w-full bg-[#FAF8F2] py-20 lg:py-28 border-b border-[#DCD3C2]">
+      {/* 3. SIGNATURE SERVICES — Image-Led Grid */}
+      <section className="w-full bg-[#F6F1E6] py-18 lg:py-24 border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <p className="font-cursive text-[30px] text-[#173B70] mb-1">
+              <p className="font-cursive text-[32px] text-[#692C90] mb-1">
                 Crafted with Grace &amp; Precision
               </p>
-              <h2 className="font-serif text-[32px] lg:text-[42px] text-black font-bold">
-                Catering for Every Occasion.
+              <h2 className="font-didot text-[32px] lg:text-[42px] text-[#4A2366] font-bold">
+                Catering for Every Grand Occasion.
               </h2>
             </div>
             <Link
               to="/catering-services"
               data-path="catering-services"
-              className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.15em] text-black hover:text-[#173B70] transition-colors border-b-2 border-[#173B70] pb-1 self-start md:self-auto"
+              className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.15em] text-[#4A2366] hover:text-[#692C90] transition-colors border-b-2 border-[#692C90] pb-1 self-start md:self-auto"
             >
               <span>View All Services</span>
               <span aria-hidden="true">&rarr;</span>
@@ -157,26 +303,30 @@ export const HomePage: React.FC = () => {
               <Link
                 key={service.id}
                 to={`/catering-services#${service.anchor}`}
-                className="group flex flex-col"
+                className="group flex flex-col bg-white rounded-md border border-[#D8D0B9] p-3.5 hover:shadow-royal transition-all duration-300"
               >
-                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm border border-[#DCD3C2] bg-white mb-4">
+                <div className="relative w-full aspect-[4/3] overflow-hidden rounded-sm bg-[#F6F1E6] mb-3.5">
                   <RoyalImage
                     src={service.image}
                     alt={service.alt}
                     fallbackLabel={service.title}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
+                  <span className="absolute top-3 left-3 px-2 py-0.5 bg-[#4A2366]/90 text-[#F1A91E] font-trajan text-[10px] font-bold uppercase tracking-wider rounded">
+                    {service.number}
+                  </span>
                 </div>
-                <div className="flex items-center justify-between pt-1 border-b border-[#DCD3C2] pb-3 group-hover:border-[#173B70] transition-colors">
-                  <h3 className="font-serif text-[24px] text-black font-bold group-hover:text-[#173B70] transition-colors">
-                    {service.title}
-                  </h3>
-                  <span
-                    className="text-[12px] font-bold uppercase tracking-[0.14em] text-black group-hover:text-[#173B70] transition-colors inline-flex items-center gap-1"
-                    aria-hidden="true"
-                  >
-                    <span>Explore</span>
-                    <span>&rarr;</span>
+                <div className="flex items-center justify-between pt-1 border-t border-[#D8D0B9]/60 pb-2">
+                  <div>
+                    <span className="font-sans text-[11px] font-bold uppercase tracking-wider text-[#692C90] block mb-0.5">
+                      {service.categoryTag}
+                    </span>
+                    <h3 className="font-didot text-[22px] text-[#4A2366] font-bold group-hover:text-[#692C90] transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <span className="w-8 h-8 rounded-full bg-[#FAF7F0] border border-[#D8D0B9] group-hover:bg-[#692C90] group-hover:text-white flex items-center justify-center transition-colors text-[14px]">
+                    &rarr;
                   </span>
                 </div>
               </Link>
@@ -185,30 +335,31 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. LIVE EVENT VIDEO HIGHLIGHTS — Sophisticated Reel Section */}
-      <section className="w-full bg-[#121212] text-white py-20 lg:py-24 border-b border-[#2A2A2A]">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      {/* 4. LIVE EVENT VIDEO REELS — Real Indore Celebrations */}
+      <section className="w-full bg-[#1A0B26] text-white py-20 lg:py-24 border-b border-[#3D1A57] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-pulse" />
-                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.24em] text-[#C5A15A]">
-                  AUTHENTIC EVENT FOOTAGE
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F1A91E] animate-pulse" />
+                <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.24em] text-[#F1A91E]">
+                  AUTHENTIC EVENT FOOTAGE &middot; 10 VIDEOS
                 </span>
               </div>
-              <h2 className="font-serif text-[32px] sm:text-[42px] lg:text-[46px] text-white font-bold leading-tight">
+              <h2 className="font-didot text-[32px] sm:text-[42px] lg:text-[46px] text-white font-bold leading-tight">
                 Live Banquet Experience Reels.
               </h2>
-              <p className="font-sans text-[15px] text-white/70 max-w-xl mt-2 leading-relaxed">
-                Step into our actual event lawns in Indore. Watch real buffet walkthroughs, live tandoor action, and illuminated royal counters.
+              <p className="font-sans text-[15px] text-white/75 max-w-xl mt-2 leading-relaxed">
+                Step inside our actual wedding banquet lawns and live counters in Indore. Click any reel
+                to play full-screen with sound.
               </p>
             </div>
 
             <Link
               to="/gallery"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#C5A15A] text-black font-sans text-[12px] font-bold uppercase tracking-[0.16em] hover:bg-white transition-colors rounded-sm shadow-md self-start md:self-auto"
+              className="inline-flex items-center gap-2 px-6 py-3 btn-royal-gold text-[12px] font-extrabold uppercase tracking-[0.16em] rounded-sm shadow-md self-start md:self-auto"
             >
-              <span>Explore All 10 Videos</span>
+              <span>Explore All 10 Reels</span>
               <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
@@ -218,7 +369,7 @@ export const HomePage: React.FC = () => {
               <div
                 key={video.id}
                 onClick={() => setSelectedVideo(video)}
-                className="group relative flex flex-col bg-[#1A1A1A] border border-[#2D2D2D] hover:border-[#C5A15A] rounded-sm overflow-hidden transition-all duration-300 cursor-pointer shadow-lg hover:shadow-2xl hover:-translate-y-1"
+                className="group relative flex flex-col bg-[#2A113D] border border-[#4A2366] hover:border-[#F1A91E] rounded-md overflow-hidden transition-all duration-300 cursor-pointer shadow-xl hover:-translate-y-1"
               >
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-black">
                   <img
@@ -227,8 +378,8 @@ export const HomePage: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
-                  
-                  <span className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-black/80 backdrop-blur-sm border border-[#C5A15A]/40 text-[#C5A15A] font-sans text-[9.5px] font-bold uppercase tracking-wider rounded">
+
+                  <span className="absolute top-2.5 left-2.5 px-2 py-0.5 bg-[#4A2366]/90 backdrop-blur-sm border border-[#F1A91E]/40 text-[#F1A91E] font-trajan text-[9.5px] font-bold uppercase tracking-wider rounded">
                     {video.badge}
                   </span>
 
@@ -237,7 +388,7 @@ export const HomePage: React.FC = () => {
                   </span>
 
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-full bg-[#C5A15A]/90 text-black flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-xl">
+                    <div className="w-12 h-12 rounded-full bg-[#F1A91E] text-[#2D133E] flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-xl">
                       <svg className="w-5 h-5 ml-0.5 fill-current" viewBox="0 0 24 24">
                         <path d="M8 5v14l11-7z" />
                       </svg>
@@ -247,14 +398,14 @@ export const HomePage: React.FC = () => {
 
                 <div className="p-4 flex flex-col justify-between flex-1">
                   <div>
-                    <span className="font-sans text-[10px] uppercase tracking-wider text-white/50 block mb-1">
+                    <span className="font-trajan text-[10px] uppercase tracking-wider text-[#F1A91E]/80 block mb-1">
                       {video.subtitle}
                     </span>
-                    <h3 className="font-serif text-[16px] text-white font-bold leading-snug group-hover:text-[#C5A15A] transition-colors line-clamp-2">
+                    <h3 className="font-didot text-[17px] text-white font-bold leading-snug group-hover:text-[#F1A91E] transition-colors line-clamp-2">
                       {video.title}
                     </h3>
                   </div>
-                  <p className="font-sans text-[11.5px] text-white/60 line-clamp-2 mt-2">
+                  <p className="font-sans text-[12px] text-white/70 line-clamp-2 mt-2 leading-relaxed">
                     {video.description}
                   </p>
                 </div>
@@ -264,25 +415,26 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. MENU PREVIEW — Visual Culinary Introduction */}
-      <section className="w-full bg-white py-20 lg:py-28 border-b border-[#DCD3C2]">
+      {/* 5. CLIENT MENU HIGHLIGHTS (Featuring Authentic Client PDF Items) */}
+      <section className="w-full bg-white py-20 lg:py-28 border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div className="max-w-xl">
-              <p className="font-cursive text-[30px] text-[#173B70] mb-1">
+              <p className="font-cursive text-[32px] text-[#692C90] mb-1">
                 Heirloom Recipes &amp; Pure Vegetarian Craft
               </p>
-              <h2 className="font-serif text-[32px] lg:text-[42px] text-black font-bold mb-3">
-                A Taste of Something Special.
+              <h2 className="font-didot text-[32px] lg:text-[42px] text-[#4A2366] font-bold mb-3">
+                Curated Banquet Menus.
               </h2>
-              <p className="font-sans text-[16px] text-black font-medium">
-                Pure vegetarian, traditional Malwi Dal Bafla, and strict Jain courses tailored to your palate.
+              <p className="font-sans text-[15.5px] text-[#2B2B2B]/85">
+                Authentic Malwi Dal Bafla, Shahi Paneer, Dum Aloo, Dal Tadka, Clay-Oven Naans, Indori
+                Sarafa Chaat, Veg Chowmein, and Halwai Sweets.
               </p>
             </div>
             <Link
               to="/menu"
               data-path="menu"
-              className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.15em] text-black hover:text-[#173B70] transition-colors border-b-2 border-[#173B70] pb-1 self-start md:self-auto"
+              className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.15em] text-[#4A2366] hover:text-[#692C90] transition-colors border-b-2 border-[#692C90] pb-1 self-start md:self-auto"
             >
               <span>Explore Complete Menu</span>
               <span aria-hidden="true">&rarr;</span>
@@ -294,9 +446,9 @@ export const HomePage: React.FC = () => {
               <Link
                 key={cat.key}
                 to="/menu"
-                className="group flex flex-col"
+                className="group flex flex-col bg-[#FAF7F0] border border-[#D8D0B9] rounded-md p-3 hover:shadow-royal transition-all duration-300"
               >
-                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm border border-[#DCD3C2] bg-[#FAF8F2] mb-4">
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-sm bg-white mb-3">
                   <RoyalImage
                     src={cat.image}
                     alt={cat.alt}
@@ -304,10 +456,10 @@ export const HomePage: React.FC = () => {
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>
-                <span className="font-sans text-[11px] font-bold uppercase tracking-[0.18em] text-[#173B70] mb-1">
+                <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.18em] text-[#692C90] mb-1">
                   Course {cat.number}
                 </span>
-                <h3 className="font-serif text-[23px] text-black font-bold group-hover:text-[#173B70] transition-colors">
+                <h3 className="font-didot text-[22px] text-[#4A2366] font-bold group-hover:text-[#692C90] transition-colors">
                   {cat.title}
                 </h3>
               </Link>
@@ -316,24 +468,24 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 6. GALLERY PREVIEW — Real Event Photographic Composition */}
-      <section className="w-full bg-[#FAF8F2] py-20 lg:py-28 border-b border-[#DCD3C2]">
+      {/* 6. GALLERY PREVIEW — Real Event Photography */}
+      <section className="w-full bg-[#F6F1E6] py-20 lg:py-28 border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
             <div>
-              <p className="font-cursive text-[30px] text-[#173B70] mb-1">
+              <p className="font-cursive text-[32px] text-[#692C90] mb-1">
                 Unforgettable Banquets &amp; Celebrations
               </p>
-              <h2 className="font-serif text-[32px] lg:text-[42px] text-black font-bold">
+              <h2 className="font-didot text-[32px] lg:text-[42px] text-[#4A2366] font-bold">
                 Moments, Beautifully Served.
               </h2>
             </div>
             <Link
               to="/gallery"
               data-path="gallery"
-              className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.15em] text-black hover:text-[#173B70] transition-colors border-b-2 border-[#173B70] pb-1 self-start md:self-auto"
+              className="inline-flex items-center gap-2 text-[12.5px] font-bold uppercase tracking-[0.15em] text-[#4A2366] hover:text-[#692C90] transition-colors border-b-2 border-[#692C90] pb-1 self-start md:self-auto"
             >
-              <span>View Event Gallery</span>
+              <span>View Full Gallery (28 Media)</span>
               <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
@@ -341,15 +493,15 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             <Link
               to="/gallery"
-              className="md:col-span-7 group relative aspect-[16/11] overflow-hidden rounded-sm border border-[#DCD3C2] bg-white"
+              className="md:col-span-7 group relative aspect-[16/11] overflow-hidden rounded-md border border-[#D8D0B9] bg-white shadow-sm"
             >
               <RoyalImage
                 src={GALLERY_ITEMS[0].image}
                 alt={GALLERY_ITEMS[0].alt}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute bottom-4 left-4 bg-[#FAF8F2]/95 border border-[#C5A15A] px-4 py-2 rounded-sm shadow-md">
-                <span className="font-serif text-[20px] font-bold text-black">
+              <div className="absolute bottom-4 left-4 bg-[#F6F1E6]/95 border border-[#D8D0B9] px-4 py-2 rounded-sm shadow-md">
+                <span className="font-didot text-[18px] sm:text-[20px] font-bold text-[#4A2366]">
                   {GALLERY_ITEMS[0].title}
                 </span>
               </div>
@@ -358,15 +510,15 @@ export const HomePage: React.FC = () => {
             <div className="md:col-span-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-6">
               <Link
                 to="/gallery"
-                className="group relative aspect-[16/9] overflow-hidden rounded-sm border border-[#DCD3C2] bg-white"
+                className="group relative aspect-[16/9] overflow-hidden rounded-md border border-[#D8D0B9] bg-white shadow-sm"
               >
                 <RoyalImage
                   src={GALLERY_ITEMS[1].image}
                   alt={GALLERY_ITEMS[1].alt}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute bottom-3 left-3 bg-[#FAF8F2]/95 border border-[#C5A15A] px-3.5 py-1.5 rounded-sm shadow-md">
-                  <span className="font-serif text-[18px] font-bold text-black">
+                <div className="absolute bottom-3 left-3 bg-[#F6F1E6]/95 border border-[#D8D0B9] px-3.5 py-1.5 rounded-sm shadow-md">
+                  <span className="font-didot text-[17px] font-bold text-[#4A2366]">
                     {GALLERY_ITEMS[1].title}
                   </span>
                 </div>
@@ -374,16 +526,16 @@ export const HomePage: React.FC = () => {
 
               <Link
                 to="/gallery"
-                className="group relative aspect-[16/9] overflow-hidden rounded-sm border border-[#DCD3C2] bg-white"
+                className="group relative aspect-[16/9] overflow-hidden rounded-md border border-[#D8D0B9] bg-white shadow-sm"
               >
                 <RoyalImage
-                  src={GALLERY_ITEMS[2].image}
-                  alt={GALLERY_ITEMS[2].alt}
+                  src={GALLERY_ITEMS[3].image}
+                  alt={GALLERY_ITEMS[3].alt}
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
-                <div className="absolute bottom-3 left-3 bg-[#FAF8F2]/95 border border-[#C5A15A] px-3.5 py-1.5 rounded-sm shadow-md">
-                  <span className="font-serif text-[18px] font-bold text-black">
-                    {GALLERY_ITEMS[2].title}
+                <div className="absolute bottom-3 left-3 bg-[#F6F1E6]/95 border border-[#D8D0B9] px-3.5 py-1.5 rounded-sm shadow-md">
+                  <span className="font-didot text-[17px] font-bold text-[#4A2366]">
+                    {GALLERY_ITEMS[3].title}
                   </span>
                 </div>
               </Link>
@@ -392,26 +544,49 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 7. FINAL CTA */}
-      <section className="w-full bg-[#EFE5CE] text-black py-20 lg:py-28 border-t-2 border-[#173B70]">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center">
-          <p className="font-cursive text-[34px] text-[#173B70] mb-1">
-            A Royal Welcome Awaits Your Guests
+      {/* 7. FINAL INVITATION CTA */}
+      <section className="w-full bg-[#4A2366] text-white py-20 lg:py-28 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center relative z-10">
+          <div className="w-16 h-16 rounded-full bg-[#F1A91E] text-[#2D133E] flex items-center justify-center p-3 mb-4 shadow-xl">
+            <img
+              src={assetUrl(BRAND_ASSETS.logomark)}
+              alt="RCI Crest"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          <p className="font-cursive text-[36px] text-[#F1A91E] mb-1">
+            Where Tradition Meets Taste
           </p>
-          <h2 className="font-serif text-[34px] sm:text-[44px] lg:text-[50px] text-black font-bold leading-tight mb-5">
-            Your Occasion. Our Hospitality.
+
+          <h2 className="font-didot text-[34px] sm:text-[46px] lg:text-[54px] text-white font-bold leading-tight mb-4">
+            Plan Your Grand Celebration With Us.
           </h2>
-          <p className="font-sans text-[16px] text-black font-medium max-w-xl mb-10">
-            Share your event date and guest count to begin planning a tailored menu with our Indore
-            catering team.
+
+          <p className="font-sans text-[16px] text-[#F6F1E6]/85 font-normal max-w-xl mb-9 leading-relaxed">
+            Founded in 1960 in Pardesipura, Indore. Share your celebration date and guest count to
+            experience personalized royal menu curation.
           </p>
-          <Link
-            to="/contact-booking"
-            data-path="contact-booking"
-            className="inline-flex items-center justify-center px-9 py-4 btn-royal-gold text-[12.5px] font-bold uppercase tracking-[0.18em] rounded-sm shadow-md"
-          >
-            Request a Quote
-          </Link>
+
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <Link
+              to="/contact-booking"
+              data-path="contact-booking"
+              className="inline-flex items-center justify-center px-9 py-4 btn-royal-gold text-[12.5px] font-extrabold uppercase tracking-[0.18em] rounded-sm shadow-md"
+            >
+              Request a Custom Quote
+            </Link>
+
+            <a
+              href={BUSINESS_INFO.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white/10 hover:bg-white hover:text-[#4A2366] text-white font-sans text-[12.5px] font-bold uppercase tracking-[0.14em] rounded-sm border border-[#F1A91E]/50 transition-colors"
+            >
+              <span className="w-2.5 h-2.5 rounded-full bg-[#4DAF4E]" />
+              <span>WhatsApp Direct Enquiry</span>
+            </a>
+          </div>
         </div>
       </section>
 

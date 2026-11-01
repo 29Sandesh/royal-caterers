@@ -17,9 +17,9 @@
 
   body {
     overscroll-behavior-x: none;
-    background-color: #FAF8F2;
-    color: #000000;
-    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F6F1E6;
+    color: #2B2B2B;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
   }
 
   h1,
@@ -27,12 +27,12 @@
   h3,
   h4,
   .font-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    color: #000000;
+    font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    color: #2B2B2B;
     font-weight: 700;
   }
 
-  /* Accessible keyboard focus ring in Antique Gold (#C5A15A) */
+  /* Accessible keyboard focus ring in Royal Purple */
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
@@ -40,101 +40,114 @@
   textarea:focus-visible,
   [role='button']:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid #173B70;
+    outline: 2px solid #692C90;
     outline-offset: 2px;
   }
 }
 
-/* Explicit utility & typography classes to guarantee immediate rendering */
+/* Typography Utility Classes */
+.font-didot {
+  font-family: 'Playfair Display', Didot, Georgia, serif;
+}
+
+.font-trajan {
+  font-family: Cinzel, 'Trajan Pro 3', Georgia, serif;
+}
+
 .font-cursive {
-  font-family: 'Great Vibes', 'Cormorant Garamond', cursive;
-  font-weight: 400;
+  font-family: 'Great Vibes', cursive;
 }
 
-.font-serif-italic {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 600;
-}
-
+/* Background & Border Classes */
 .bg-ivory {
-  background-color: #FAF8F2 !important;
+  background-color: #F6F1E6 !important;
 }
 
 .bg-champagne {
   background-color: #EFE5CE !important;
 }
 
-.bg-gold {
-  background-color: #D4AF37 !important;
+.bg-royal-purple {
+  background-color: #692C90 !important;
 }
 
-.bg-royal-tint {
-  background-color: #EDF2F8 !important;
-}
-
-.text-ink {
-  color: #000000 !important;
-}
-
-.text-muted {
-  color: #1F2937 !important;
+.bg-royal-dark {
+  background-color: #4A2366 !important;
 }
 
 .text-royal {
-  color: #112D57 !important;
+  color: #692C90 !important;
 }
 
-.text-gold-dark {
-  color: #7A5C12 !important;
+.text-royal-dark {
+  color: #4A2366 !important;
+}
+
+.text-gold {
+  color: #F1A91E !important;
 }
 
 .border-subtle {
-  border-color: #DCD3C2 !important;
+  border-color: #D8D0B9 !important;
 }
 
+.border-royal {
+  border-color: #692C90 !important;
+}
+
+/* Luxury Royal Buttons */
 .btn-royal-gold {
-  background-color: #D4AF37 !important;
-  color: #000000 !important;
-  font-weight: 700 !important;
-  border: 1.5px solid #173B70 !important;
-  transition: all 200ms ease;
+  background: linear-gradient(135deg, #F1A91E 0%, #E59800 100%) !important;
+  color: #261136 !important;
+  font-weight: 800 !important;
+  border: 1.5px solid #4A2366 !important;
+  box-shadow: 0 4px 14px rgba(241, 169, 30, 0.28);
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-royal-gold:hover {
-  background-color: #E5C354 !important;
-  color: #000000 !important;
-  box-shadow: 0 6px 18px rgba(23, 59, 112, 0.16);
+  background: linear-gradient(135deg, #FFB938 0%, #F1A91E 100%) !important;
+  color: #12041D !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(241, 169, 30, 0.42);
+}
+
+.btn-royal-purple {
+  background: linear-gradient(135deg, #692C90 0%, #4A2366 100%) !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  border: 1.5px solid #F1A91E !important;
+  box-shadow: 0 4px 18px rgba(74, 35, 102, 0.25);
+  transition: all 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-royal-purple:hover {
+  background: linear-gradient(135deg, #7C35AA 0%, #5B2C7D 100%) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(105, 44, 144, 0.38);
 }
 
 .btn-royal-outline {
   background-color: #FFFFFF !important;
-  color: #000000 !important;
+  color: #4A2366 !important;
   font-weight: 700 !important;
-  border: 1.5px solid #173B70 !important;
+  border: 1.5px solid #692C90 !important;
   transition: all 200ms ease;
 }
 
 .btn-royal-outline:hover {
-  background-color: #EFE5CE !important;
-  color: #000000 !important;
+  background-color: #F6F1E6 !important;
+  color: #261136 !important;
+  border-color: #4A2366 !important;
 }
 
-/* Woven ceremonial carpet texture for the Royal Welcome reveal */
-.carpet-weave {
-  background-color: #173B70;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.04) 0px,
-      rgba(255, 255, 255, 0.04) 1px,
-      transparent 1px,
-      transparent 3px
-    ),
-    radial-gradient(ellipse at center, #1C4582 0%, #143361 65%, #0F274B 100%);
+/* Brocade & Rangoli Pattern Backdrop */
+.bg-rangoli-pattern {
+  background-image: radial-gradient(circle at 50% 50%, rgba(105, 44, 144, 0.04) 0%, transparent 60%);
 }
 
-/* Hide scrollbars only on horizontal filter strips */
+/* Hide scrollbars on horizontal filter strips */
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -164,16 +177,6 @@
   }
 }
 
-@keyframes pulseSubtle {
-  0%,
-  100% {
-    opacity: 0.6;
-  }
-  50% {
-    opacity: 0.92;
-  }
-}
-
 .animate-fadeUp {
   animation: fadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
@@ -182,11 +185,7 @@
   animation: fadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.animate-skeleton {
-  animation: pulseSubtle 1.6s ease-in-out infinite;
-}
-
-/* Respect user reduced motion preferences */
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

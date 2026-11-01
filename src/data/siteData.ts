@@ -23,17 +23,52 @@ export const NAV_LINKS: NavLinkItem[] = [
   { label: 'Contact', footerLabel: 'Contact', path: '/contact-booking', dataPath: 'contact-booking' },
 ];
 
+export const BRAND_ASSETS = {
+  mainLogo: '/brand/RCI MAIN LOGO.svg',
+  mainLogoWhite: '/brand/RCI MAIN LOGO white.svg',
+  mainLogoToned: '/brand/RCI MAIN LOGO toned.svg',
+  mainLogoBlack: '/brand/RCI MAIN LOGO Black.svg',
+  logomark: '/brand/RCI LOGOMARK.svg',
+  logomarkWhite: '/brand/RCI LOGOMARK White.svg',
+  logomarkToned: '/brand/RCI LOGOMARK toned.svg',
+  typemark: '/brand/RCI TYPEMARK.svg',
+  emblemClochePurple: '/brand/rci_emblem_cloche_purple.png',
+  emblemClocheGold: '/brand/rci_emblem_cloche_gold.png',
+  emblemCrownPurple: '/brand/rci_emblem_crown_purple.png',
+  emblemCrownGold: '/brand/rci_emblem_crown_gold.png',
+  emblemHandiPurple: '/brand/rci_emblem_handi_purple.png',
+  emblemHandiGold: '/brand/rci_emblem_handi_gold.png',
+  rangoliPattern: '/brand/RCI Rangoli @1.5x.webp',
+  rangoliSvg: '/brand/RCI Artboard 2.svg',
+} as const;
+
 export const BUSINESS_INFO = {
   name: 'Royal Caterers India',
+  shortName: 'Royal Caterers',
+  acronym: 'RCI',
+  foundedYear: '1960',
+  tagline: 'Where Tradition Meets Taste · Serving Celebrations Since 1960',
+  emblemTagline: 'we serve taste of life',
   shortLocality: 'Pardesipura, Indore',
+  city: 'Indore',
+  state: 'Madhya Pradesh',
   fullAddress: 'Pardesipura, Indore, Madhya Pradesh 452003',
   phoneDisplay: '+91 98272 86535',
-  phoneVerificationNote: 'Phone number flagged for final verification prior to publication.',
   phoneHref: 'tel:+919827286535',
   whatsappHref: 'https://wa.me/919827286535',
-  domain: 'royalcaterersindia.in',
+  domain: 'www.royalcaterersindia.com',
   tastingHours: 'By Prior Appointment · 10:00 AM – 8:00 PM',
-  mapsHref: 'https://maps.google.com/?q=Pardesipura,Indore,Madhya+Pradesh',
+  mapsHref: 'https://share.google/009LuUlAvzVJOk1bK',
+  socials: {
+    instagram: 'https://www.instagram.com/royal_caterers_india/',
+    facebook: 'https://www.facebook.com/RoyalCaterersIndia/mentions/',
+    whatsapp: 'https://wa.me/919827286535',
+    wedMeGood: 'https://www.wedmegood.com/profile/Royal-Caterers-Indore-1257311',
+    weddingWire: 'https://www.weddingwire.in/caterers/royal-caterers-indore--e308405',
+    justDial: 'https://www.justdial.com/Indore/Royal-Caterers-Pardesipura/0731PX731-X731-220211220530-F7M9_BZDET',
+    youtube: 'https://www.youtube.com/channel/UC86nEO81myJCwX9W--UsG5g',
+    linkedIn: 'https://in.linkedin.com/company/royal-caterers-indore',
+  },
 } as const;
 
 export interface ServiceOffering {

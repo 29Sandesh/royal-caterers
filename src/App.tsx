@@ -11,19 +11,29 @@ import { MenuPage } from './pages/MenuPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { ContactPage } from './pages/ContactPage';
 
+const getBasename = (): string => {
+  const base = import.meta.env.BASE_URL;
+  if (!base || base === './') return '/';
+  return base;
+};
+
 /**
  * Root Application component routing all 6 pages of Royal Caterers India.
  */
 export const App: React.FC = () => {
   return (
     <BrowserRouter
-      basename={import.meta.env.BASE_URL}
+      basename={getBasename()}
       future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
     >
       <RoyalCarpetIntro />
       <ScrollToTop />
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="w-full pt-20 bg-[#FAF8F2] text-black min-h-[calc(100vh-80px)] focus:outline-none">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="w-full pt-20 bg-[#F6F1E6] text-[#2B2B2B] min-h-[calc(100vh-80px)] focus:outline-none"
+      >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />

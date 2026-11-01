@@ -5,39 +5,33 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Core Royal Blue Redesign Palette (Section 2)
-        royal: '#173B70',
-        midnight: '#0C1D38',
-        gold: '#C5A15A',
-        champagne: '#E9D8B5',
-        ivory: '#FAF8F2',
+        // Official Royal Caterers India (RCI) Brand Palette
+        royal: '#692C90',          // Primary Royal Purple
+        'royal-dark': '#4A2366',     // Deep Imperial Plum / Aubergine
+        'royal-light': '#834FA0',    // Bright Royal Violet
+        gold: '#F1A91E',             // Vibrant Saffron Marigold Gold
+        'gold-toned': '#D8D0B9',     // Champagne Toned Gold (Brocade)
+        'gold-muted': '#C5A15A',     // Antique Warm Gold
+        ivory: '#F6F1E6',            // Warm Royal Linen Cream
+        ink: '#2B2B2B',              // Charcoal Ink
+        saffron: '#F58231',          // Warm Sunset Saffron
+        crimson: '#D7263D',          // Ruby Ceremonial Red
+        'veg-green': '#4DAF4E',      // 100% Pure Vegetarian Green
+        peacock: '#56B7AD',          // Indian Peacock Teal
         white: '#FFFFFF',
-        ink: '#17243A',
-        muted: '#6F7480',
-        'border-subtle': '#E7E1D6',
 
-        // Semantic aliases mapped strictly to Royal Blue & Antique Gold (Zero Green)
-        primary: '#173B70',
-        'primary-container': '#0C1D38',
+        // Semantic bindings
+        primary: '#692C90',
+        'primary-container': '#4A2366',
         'on-primary': '#FFFFFF',
-        'primary-fixed-dim': '#E9D8B5',
-        secondary: '#C5A15A',
-        'secondary-container': '#E9D8B5',
-        'on-secondary': '#0C1D38',
-        'on-secondary-container': '#17243A',
-        'secondary-fixed': '#E9D8B5',
-        surface: '#FAF8F2',
-        'surface-container-lowest': '#FFFFFF',
-        'surface-container-low': '#F4F0E6',
-        'surface-container': '#EFEAE0',
-        'surface-container-high': '#E7E1D6',
-        'on-surface': '#17243A',
-        'on-surface-variant': '#6F7480',
-        outline: '#6F7480',
-        'outline-variant': '#E7E1D6',
-        error: '#9E2A2B',
-        'error-container': '#F9E6E6',
-        'on-error-container': '#6E1819',
+        secondary: '#F1A91E',
+        'secondary-container': '#D8D0B9',
+        'on-secondary': '#4A2366',
+        surface: '#F6F1E6',
+        'surface-card': '#FFFFFF',
+        'surface-subtle': '#EFEAE0',
+        'border-brand': '#D8D0B9',
+        'border-royal': '#692C90',
       },
       borderRadius: {
         none: '0px',
@@ -45,29 +39,21 @@ export default {
         DEFAULT: '4px',
         md: '6px',
         lg: '8px',
-        xl: '10px',
+        xl: '12px',
         full: '9999px',
       },
       boxShadow: {
-        subtle: '0 2px 14px rgba(12, 29, 56, 0.04)',
-        elevated: '0 14px 36px rgba(12, 29, 56, 0.08)',
-        modal: '0 24px 56px rgba(12, 29, 56, 0.22)',
+        subtle: '0 2px 14px rgba(74, 35, 102, 0.05)',
+        elevated: '0 14px 36px rgba(74, 35, 102, 0.10)',
+        royal: '0 16px 40px rgba(105, 44, 144, 0.18)',
+        modal: '0 24px 56px rgba(43, 43, 43, 0.28)',
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
-      fontSize: {
-        // Section 3 Restrained Typography Scale
-        'hero-desktop': ['68px', { lineHeight: '1.08', letterSpacing: '-0.015em', fontWeight: '500' }],
-        'hero-mobile': ['42px', { lineHeight: '1.12', letterSpacing: '-0.01em', fontWeight: '500' }],
-        'section-desktop': ['40px', { lineHeight: '1.16', letterSpacing: '-0.01em', fontWeight: '500' }],
-        'section-mobile': ['30px', { lineHeight: '1.2', letterSpacing: '-0.005em', fontWeight: '500' }],
-        'title-lg': ['24px', { lineHeight: '1.3', letterSpacing: '0em', fontWeight: '500' }],
-        'body-base': ['16px', { lineHeight: '1.65', letterSpacing: '0em', fontWeight: '400' }],
-        'body-sm': ['14px', { lineHeight: '1.6', letterSpacing: '0.005em', fontWeight: '400' }],
-        nav: ['13.5px', { lineHeight: '1.4', letterSpacing: '0.04em', fontWeight: '400' }],
-        eyebrow: ['11px', { lineHeight: '1.4', letterSpacing: '0.18em', fontWeight: '500' }],
+        didot: ['"Playfair Display"', 'Didot', 'Georgia', 'serif'],
+        trajan: ['Cinzel', '"Trajan Pro 3"', 'Georgia', 'serif'],
+        serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
+        cursive: ['"Great Vibes"', 'cursive'],
       },
     },
   },

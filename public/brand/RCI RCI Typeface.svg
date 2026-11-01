@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1707.57 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-2 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-4 {
+        font-size: 208.9px;
+      }
+
+      .cls-4, .cls-5 {
+        font-family: DidotLTPro-BoldItalic, 'Didot LT Pro';
+        font-style: italic;
+        font-weight: 700;
+      }
+
+      .cls-4, .cls-6 {
+        fill: #692c90;
+      }
+
+      .cls-7 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-8 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        letter-spacing: .01em;
+      }
+
+      .cls-10 {
+        letter-spacing: .03em;
+      }
+
+      .cls-11 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-12 {
+        letter-spacing: -.13em;
+      }
+
+      .cls-5 {
+        fill: #4a2366;
+        font-size: 43.9px;
+      }
+
+      .cls-13 {
+        letter-spacing: 0em;
+      }
+
+      .cls-6 {
+        font-family: TrajanPro3-Regular, 'Trajan Pro 3';
+        font-size: 182.38px;
+      }
+
+      .cls-14 {
+        fill: #f6f1e6;
+      }
+    </style>
+  </defs>
+  <rect class="cls-14" x="-7.15" y="-4.19" width="1721.87" height="1008.37"/>
+  <text class="cls-5" transform="translate(61.61 117.24)"><tspan x="0" y="0">Primary</tspan><tspan class="cls-3" x="158.16" y="0"> </tspan><tspan class="cls-12" x="164.3" y="0">T</tspan><tspan x="190.03" y="0">ype</tspan><tspan class="cls-11" x="254.6" y="0">f</tspan><tspan x="269.35" y="0">ace</tspan></text>
+  <text class="cls-5" transform="translate(56.98 599.85)"><tspan x="0" y="0">Secondary</tspan><tspan class="cls-3" x="198.15" y="0"> </tspan><tspan class="cls-12" x="204.29" y="0">T</tspan><tspan x="230.02" y="0">ype</tspan><tspan class="cls-1" x="294.59" y="0">f</tspan><tspan class="cls-8" x="309.34" y="0">ace</tspan></text>
+  <text class="cls-4" transform="translate(57.3 392.94)"><tspan x="0" y="0">Didot </tspan><tspan class="cls-2" x="562.78" y="0">L</tspan><tspan x="676.84" y="0">T Pro</tspan></text>
+  <text class="cls-6" transform="translate(38.09 846.61)"><tspan class="cls-13" x="0" y="0">T</tspan><tspan class="cls-10" x="124.2" y="0">r</tspan><tspan x="250.95" y="0">ajan </tspan><tspan class="cls-7" x="755.76" y="0">P</tspan><tspan class="cls-9" x="867.74" y="0">r</tspan><tspan x="991.94" y="0">o 3</tspan></text>
+</svg>

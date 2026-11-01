@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { NAV_LINKS } from '../data/siteData';
+import { NAV_LINKS, BUSINESS_INFO, BRAND_ASSETS, assetUrl } from '../data/siteData';
 
 /**
- * Minimal Global Header for Royal Caterers India.
- * Features Bold Black typography, the compact ROYAL CATERERS / INDIA · INDORE wordmark,
- * centered navigation, and a high-contrast Antique Gold "Request a Quote" button with Bold Black text.
+ * Global Header for Royal Caterers India (RCI).
+ * Features the official client vector logo & logomark, Didot/Trajan typography,
+ * Imperial Purple & Saffron Gold theme, and quick quote/WhatsApp actions.
  */
 export const Navbar: React.FC = () => {
   const location = useLocation();
@@ -33,34 +33,47 @@ export const Navbar: React.FC = () => {
   }, [mobileMenuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 h-20 bg-[#FAF8F2] border-b border-[#DCD3C2]">
-      {/* Skip to Main Content Link for Keyboard Accessibility */}
+    <header className="fixed top-0 left-0 right-0 z-40 h-20 bg-[#F6F1E6]/95 backdrop-blur-md border-b border-[#D8D0B9] transition-all">
+      {/* Skip to Main Content Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-4 focus:z-[60] btn-royal-gold px-4 py-2 rounded-sm text-eyebrow uppercase tracking-widest"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-4 focus:z-[60] btn-royal-gold px-4 py-2 rounded-sm text-[11px] font-bold uppercase tracking-widest"
       >
         Skip to main content
       </a>
 
-      <div className="max-w-7xl mx-auto h-full px-5 sm:px-8 lg:px-12 flex items-center justify-between">
-        {/* Left: Compact Typographic Wordmark in Bold Black */}
+      <div className="max-w-7xl mx-auto h-full px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+        {/* Left: Official Vector Brand Logo */}
         <Link
           to="/"
           data-path="home"
           aria-label="Royal Caterers India — Home"
-          className="group inline-flex flex-col items-start justify-center py-1"
+          className="group inline-flex items-center gap-3 py-1"
         >
-          <span className="font-serif text-[18px] sm:text-[20px] font-bold tracking-[0.22em] text-black uppercase leading-none">
-            ROYAL CATERERS
-          </span>
-          <span className="w-8 h-[1.5px] bg-[#C5A15A] my-1.5 transition-all duration-300 group-hover:w-full" />
-          <span className="font-sans text-[10px] font-bold tracking-[0.28em] text-black uppercase leading-none">
-            INDIA &middot; INDORE
-          </span>
+          {/* Official Cloche Logomark */}
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#4A2366] border border-[#F1A91E] flex items-center justify-center p-1.5 shadow-sm group-hover:scale-105 transition-transform duration-200">
+            <img
+              src={assetUrl(BRAND_ASSETS.logomarkWhite)}
+              alt="RCI Logo"
+              className="w-full h-full object-contain"
+            />
+          </div>
+
+          <div className="flex flex-col items-start justify-center">
+            <span className="font-trajan text-[15px] sm:text-[18px] font-bold tracking-[0.18em] text-[#4A2366] uppercase leading-none">
+              ROYAL CATERERS
+            </span>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="w-5 h-[1.5px] bg-[#F1A91E]" />
+              <span className="font-didot italic text-[11px] sm:text-[12px] font-semibold tracking-wider text-[#692C90] leading-none">
+                India &middot; Since 1960
+              </span>
+            </div>
+          </div>
         </Link>
 
-        {/* Centre: Minimal Desktop Navigation in Bold Black */}
-        <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-8 xl:gap-10">
+        {/* Centre: Desktop Navigation with Imperial Purple Active Highlights */}
+        <nav aria-label="Main Navigation" className="hidden lg:flex items-center gap-7 xl:gap-9">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.path);
             return (
@@ -69,14 +82,14 @@ export const Navbar: React.FC = () => {
                 to={item.path}
                 data-path={item.dataPath}
                 aria-current={active ? 'page' : undefined}
-                className={`relative py-2 text-[14px] tracking-wide transition-colors duration-200 ${
-                  active ? 'text-black font-bold' : 'text-black/80 font-semibold hover:text-black'
+                className={`relative py-2 text-[14px] font-medium tracking-wide transition-colors duration-200 ${
+                  active ? 'text-[#4A2366] font-bold' : 'text-[#2B2B2B]/85 hover:text-[#692C90]'
                 }`}
               >
                 {item.label}
                 <span
                   aria-hidden="true"
-                  className={`absolute bottom-0 left-0 right-0 h-[2px] bg-[#C5A15A] transition-transform duration-300 origin-left ${
+                  className={`absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#692C90] transition-transform duration-300 origin-left ${
                     active ? 'scale-x-100' : 'scale-x-0'
                   }`}
                 />
@@ -85,14 +98,25 @@ export const Navbar: React.FC = () => {
           })}
         </nav>
 
-        {/* Right: Gold-Accented Request a Quote Button (Bold Black Text) & Mobile Trigger */}
-        <div className="flex items-center gap-3">
+        {/* Right: Direct WhatsApp Chat & Request a Quote Buttons */}
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <a
+            href={BUSINESS_INFO.whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Direct WhatsApp Enquiry"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 text-[12px] font-bold text-[#4A2366] hover:text-[#692C90] border border-[#D8D0B9] bg-white rounded-sm hover:border-[#692C90] transition-colors"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#4DAF4E] animate-pulse" />
+            <span>WhatsApp</span>
+          </a>
+
           <Link
             to="/contact-booking"
             data-path="contact-booking"
-            className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 btn-royal-gold text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm"
+            className="inline-flex items-center justify-center px-4 sm:px-5 py-2.5 btn-royal-gold text-[11.5px] sm:text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm"
           >
-            Request a Quote
+            Book Event
           </Link>
 
           <button
@@ -101,29 +125,29 @@ export const Navbar: React.FC = () => {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-navigation-drawer"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="lg:hidden w-10 h-10 inline-flex items-center justify-center text-black border border-[#173B70] bg-white rounded-sm hover:bg-[#EFE5CE] transition-colors"
+            className="lg:hidden w-10 h-10 inline-flex items-center justify-center text-[#4A2366] border border-[#692C90]/30 bg-white rounded-sm hover:bg-[#FAF8F2] transition-colors"
           >
-            <span className="material-symbols-outlined text-[22px] text-black" aria-hidden="true">
+            <span className="material-symbols-outlined text-[24px] text-[#4A2366]" aria-hidden="true">
               {mobileMenuOpen ? 'close' : 'menu'}
             </span>
           </button>
         </div>
       </div>
 
-      {/* Accessible Slide-Out Mobile Navigation Drawer */}
+      {/* Slide-Out Mobile Navigation Drawer */}
       {mobileMenuOpen && (
         <>
           <div
             aria-hidden="true"
             onClick={() => setMobileMenuOpen(false)}
-            className="lg:hidden fixed inset-0 top-20 bg-black/40 backdrop-blur-[1px] z-30 animate-fadeIn"
+            className="lg:hidden fixed inset-0 top-20 bg-[#2B2B2B]/50 backdrop-blur-sm z-30 animate-fadeIn"
           />
           <nav
             id="mobile-navigation-drawer"
             aria-label="Mobile Navigation"
-            className="lg:hidden fixed top-20 right-0 bottom-0 w-full max-w-xs bg-[#FAF8F2] border-l border-[#DCD3C2] shadow-modal z-40 px-7 py-8 flex flex-col justify-between overflow-y-auto animate-fadeIn"
+            className="lg:hidden fixed top-20 right-0 bottom-0 w-full max-w-xs bg-[#F6F1E6] border-l border-[#D8D0B9] shadow-modal z-40 px-6 py-7 flex flex-col justify-between overflow-y-auto animate-fadeIn"
           >
-            <div className="flex flex-col divide-y divide-[#DCD3C2]">
+            <div className="flex flex-col divide-y divide-[#D8D0B9]/70">
               {NAV_LINKS.map((item) => {
                 const active = isActive(item.path);
                 return (
@@ -133,29 +157,45 @@ export const Navbar: React.FC = () => {
                     data-path={item.dataPath}
                     aria-current={active ? 'page' : undefined}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="py-4 flex items-center justify-between text-[15px] font-bold text-black tracking-wide"
+                    className="py-3.5 flex items-center justify-between text-[15px] font-bold text-[#2B2B2B] tracking-wide"
                   >
-                    <span>{item.label}</span>
+                    <span className={active ? 'text-[#692C90]' : ''}>{item.label}</span>
                     {active && (
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#C5A15A]" aria-hidden="true" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#692C90]" aria-hidden="true" />
                     )}
                   </Link>
                 );
               })}
             </div>
 
-            <div className="pt-8 border-t border-[#DCD3C2] flex flex-col gap-4">
+            <div className="pt-6 border-t border-[#D8D0B9] flex flex-col gap-3">
+              <a
+                href={BUSINESS_INFO.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-3 px-4 text-center text-[12px] font-bold uppercase tracking-wider text-[#4A2366] bg-white border border-[#4DAF4E] rounded-sm hover:bg-[#FAF8F2] flex items-center justify-center gap-2"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#4DAF4E]" />
+                <span>Chat on WhatsApp</span>
+              </a>
+
               <Link
                 to="/contact-booking"
                 data-path="contact-booking"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3.5 px-5 btn-royal-gold text-center text-[12px] font-bold uppercase tracking-[0.15em] rounded-sm"
+                className="w-full py-3 px-5 btn-royal-gold text-center text-[12px] font-bold uppercase tracking-[0.15em] rounded-sm"
               >
                 Request a Quote
               </Link>
-              <p className="text-[11px] font-bold text-black text-center tracking-wider uppercase">
-                Pardesipura &middot; Indore
-              </p>
+
+              <div className="text-center pt-1">
+                <p className="text-[11px] font-trajan font-bold text-[#4A2366] tracking-wider uppercase">
+                  Where Tradition Meets Taste
+                </p>
+                <p className="text-[10px] text-[#2B2B2B]/70 font-semibold mt-0.5">
+                  Serving Celebrations Since 1960 &middot; Pardesipura, Indore
+                </p>
+              </div>
             </div>
           </nav>
         </>
