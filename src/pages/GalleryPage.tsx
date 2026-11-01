@@ -19,6 +19,7 @@ const CATEGORY_FILTERS: FilterTab[] = [
   { key: 'food', label: 'Culinary & Sweets' },
   { key: 'corporate', label: 'Corporate Galas' },
   { key: 'special-occasions', label: 'Special Feasts' },
+  { key: 'stationery', label: 'Official Menu Cards & Brand Book' },
 ];
 
 /**

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { BUSINESS_INFO } from '../data/siteData';
+import { BUSINESS_INFO, BRAND_ASSETS, assetUrl } from '../data/siteData';
 import { RoyalImage } from '../components/RoyalImage';
 
 const MENU_PREF_OPTIONS = [
@@ -142,7 +142,24 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="flex flex-col w-full bg-[#F6F1E6] text-[#2B2B2B]">
       {/* 1. Header */}
-      <section className="w-full bg-[#F6F1E6] pt-10 pb-12 lg:py-20 border-b border-[#D8D0B9]">
+      <section className="w-full bg-[#F6F1E6] pt-10 pb-12 lg:py-20 border-b border-[#D8D0B9] relative overflow-hidden">
+        {/* Seamless Textile Pattern Background */}
+        <div
+          className="absolute inset-0 opacity-[0.035] pointer-events-none bg-repeat"
+          style={{
+            backgroundImage: `url(${assetUrl(BRAND_ASSETS.patternTilePurple)})`,
+            backgroundSize: '95px 95px',
+          }}
+        />
+
+        {/* Rotating Rangoli Mandala Watermark */}
+        <div className="absolute -top-32 -right-32 sm:-top-40 sm:-right-40 w-[480px] h-[480px] sm:w-[650px] sm:h-[650px] opacity-[0.045] pointer-events-none select-none animate-spin-slow">
+          <img
+            src={assetUrl(BRAND_ASSETS.rangoliPurple)}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-3">

@@ -37,6 +37,7 @@ const HOMEPAGE_FEATURED_VIDEOS = [
  */
 export const HomePage: React.FC = () => {
   const [selectedVideo, setSelectedVideo] = useState<VideoGalleryItem | null>(null);
+  const [selectedCard, setSelectedCard] = useState<{ src: string; title: string; subtitle: string } | null>(null);
   const [activeConceptTab, setActiveConceptTab] = useState<'cloche' | 'crown' | 'handi'>('cloche');
 
   const nextVideo = useCallback(() => {
@@ -57,6 +58,24 @@ export const HomePage: React.FC = () => {
     <div className="flex flex-col w-full bg-[#F6F1E6] text-[#2B2B2B]">
       {/* 1. HERO — Editorial Imperial Purple & Ivory Two-Column Layout */}
       <section className="w-full bg-[#F6F1E6] pt-8 pb-16 lg:py-24 border-b border-[#D8D0B9] relative overflow-hidden">
+        {/* Official Client Seamless Textile Pattern Background */}
+        <div
+          className="absolute inset-0 opacity-[0.035] pointer-events-none bg-repeat"
+          style={{
+            backgroundImage: `url(${assetUrl(BRAND_ASSETS.patternTilePurple)})`,
+            backgroundSize: '95px 95px',
+          }}
+        />
+
+        {/* Majestic Rotating Royal Rangoli Mandala Watermark */}
+        <div className="absolute -top-32 -right-32 sm:-top-44 sm:-right-44 w-[500px] h-[500px] sm:w-[720px] sm:h-[720px] opacity-[0.055] pointer-events-none select-none animate-spin-slow">
+          <img
+            src={assetUrl(BRAND_ASSETS.rangoliPurple)}
+            alt="Royal Rangoli Mandala"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
         {/* Subtle decorative background glow */}
         <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-[#692C90]/5 blur-3xl pointer-events-none" />
 
@@ -145,11 +164,11 @@ export const HomePage: React.FC = () => {
                 />
 
                 {/* Floating Official Heritage Seal */}
-                <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#4A2366]/95 border-2 border-[#F1A91E] p-1.5 shadow-2xl flex items-center justify-center animate-fadeUp">
+                <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#4A2366]/95 border-2 border-[#F1A91E] p-1 shadow-2xl flex items-center justify-center animate-fadeUp group-hover:scale-105 transition-transform duration-300">
                   <img
-                    src={assetUrl(BRAND_ASSETS.emblemClocheGold)}
-                    alt="RCI 1960 Heritage Seal"
-                    className="w-full h-full object-contain rounded-full"
+                    src={assetUrl(BRAND_ASSETS.sealConcept3Gold)}
+                    alt="Official Royal Caterers Heritage Seal"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
@@ -468,6 +487,192 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* 5B. OFFICIAL CLIENT PRINTED MENU & ROYAL STATIONERY */}
+      <section className="w-full bg-[#FAF7F0] py-20 lg:py-28 border-b border-[#D8D0B9] relative overflow-hidden">
+        {/* Official Client Seamless Textile Pattern Background */}
+        <div
+          className="absolute inset-0 opacity-[0.03] pointer-events-none bg-repeat"
+          style={{
+            backgroundImage: `url(${assetUrl(BRAND_ASSETS.patternTilePurple)})`,
+            backgroundSize: '95px 95px',
+          }}
+        />
+
+        {/* Majestic Rotating Royal Rangoli Mandala Watermark */}
+        <div className="absolute -bottom-28 -left-28 w-[420px] h-[420px] opacity-[0.04] pointer-events-none select-none">
+          <img
+            src={assetUrl(BRAND_ASSETS.rangoliPurple)}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
+            <div className="max-w-2xl">
+              <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.22em] text-[#692C90] block mb-1">
+                ROYAL CATERERS INDIA &middot; OFFICIAL STATIONERY &middot; EST. 1960
+              </span>
+              <p className="font-cursive text-[32px] text-[#692C90] mb-0.5">
+                Authentic Printed Banquet Cards
+              </p>
+              <h2 className="font-didot text-[30px] sm:text-[42px] text-[#4A2366] font-bold leading-tight">
+                Designed for Royal Indian Weddings &amp; Galas.
+              </h2>
+              <p className="font-sans text-[15px] text-[#2B2B2B]/80 mt-2.5 leading-relaxed">
+                Inspected and reproduced directly from our client design archives. Featuring our authentic
+                ornate Mughal arch framing, 8-course banquet course curation, and 1960 cloche crest.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={assetUrl(BRAND_ASSETS.menuPdf)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3 btn-royal-outline text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm shadow-sm"
+              >
+                <span>Download Menu PDF (920 KB)</span>
+                <span aria-hidden="true">&darr;</span>
+              </a>
+              <Link
+                to="/menu"
+                className="inline-flex items-center gap-2 px-6 py-3 btn-royal-gold text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm shadow-md"
+              >
+                <span>Explore Full Menu</span>
+                <span aria-hidden="true">&rarr;</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* 3 Printed Menu Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Card 1: Front Cover */}
+            <div
+              onClick={() =>
+                setSelectedCard({
+                  src: assetUrl(BRAND_ASSETS.menuCardPage1),
+                  title: 'Banquet Menu Front Cover',
+                  subtitle: 'Regal Arch Motif with Gold Crown Seal & Imperial Typemark',
+                })
+              }
+              className="bg-white rounded-md border-2 border-[#D8D0B9] p-4 shadow-royal hover:border-[#F1A91E] transition-all duration-300 group flex flex-col cursor-pointer hover:-translate-y-1"
+            >
+              <div className="relative aspect-[3/4] overflow-hidden rounded border border-[#D8D0B9]/60 bg-[#FAF7F0] mb-3">
+                <img
+                  src={assetUrl(BRAND_ASSETS.menuCardPage1)}
+                  alt="Official Menu Card Front Cover"
+                  className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#4A2366]/0 group-hover:bg-[#4A2366]/20 transition-colors flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 bg-[#4A2366] text-[#F1A91E] text-[11px] font-trajan font-bold uppercase tracking-wider rounded shadow-md">
+                    Click to Zoom
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-1">
+                <span className="font-trajan text-[11px] font-bold uppercase text-[#692C90] tracking-wider">
+                  Menu Card &middot; Front Cover
+                </span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 bg-[#4A2366] text-[#F1A91E] rounded-full">
+                  Official Arch Design
+                </span>
+              </div>
+              <p className="font-didot text-[17px] font-bold text-[#4A2366] mt-1">
+                Regal Banquet Presentation Arch
+              </p>
+              <p className="text-[12px] text-[#2B2B2B]/70 mt-0.5">
+                Embossed gold crest with Indore heritage coordinates.
+              </p>
+            </div>
+
+            {/* Card 2: 8-Course Inside Menu */}
+            <div
+              onClick={() =>
+                setSelectedCard({
+                  src: assetUrl(BRAND_ASSETS.menuCardPage2),
+                  title: 'Official 8-Course Inside Spread',
+                  subtitle: 'Full 8-Course Banquet Set with 1960 Heritage Cloche Crest',
+                })
+              }
+              className="bg-white rounded-md border-2 border-[#F1A91E] p-4 shadow-royal hover:border-[#692C90] transition-all duration-300 group flex flex-col relative cursor-pointer hover:-translate-y-1"
+            >
+              <div className="absolute -top-3 right-4 px-3 py-0.5 bg-[#4A2366] text-[#F1A91E] font-trajan text-[10px] font-bold uppercase tracking-wider rounded-full shadow">
+                Client Signature 8 Courses
+              </div>
+              <div className="relative aspect-[3/4] overflow-hidden rounded border border-[#D8D0B9]/60 bg-[#FAF7F0] mb-3">
+                <img
+                  src={assetUrl(BRAND_ASSETS.menuCardPage2)}
+                  alt="Official Menu Card Inside 8 Courses"
+                  className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#4A2366]/0 group-hover:bg-[#4A2366]/20 transition-colors flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 bg-[#4A2366] text-[#F1A91E] text-[11px] font-trajan font-bold uppercase tracking-wider rounded shadow-md">
+                    Click to Zoom
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-1">
+                <span className="font-trajan text-[11px] font-bold uppercase text-[#692C90] tracking-wider">
+                  Menu Card &middot; Inside Spread
+                </span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 bg-[#4DAF4E]/15 text-[#2D6A2E] rounded-full">
+                  Pure Veg Repertoire
+                </span>
+              </div>
+              <p className="font-didot text-[17px] font-bold text-[#4A2366] mt-1">
+                8-Course Feast with 1960 RCI Seal
+              </p>
+              <p className="text-[12px] text-[#2B2B2B]/70 mt-0.5">
+                Chowmein, Pav Bhaji, Paneer Gravy, Dum Aloo, Dal Tadka, Steam Rice, Indian Breads &amp; Rasgulla.
+              </p>
+            </div>
+
+            {/* Card 3: Back Cover */}
+            <div
+              onClick={() =>
+                setSelectedCard({
+                  src: assetUrl(BRAND_ASSETS.menuCardPage3),
+                  title: 'Banquet Menu Back Cover',
+                  subtitle: 'Where Tradition Meets Taste · Serving Celebrations Since 1960',
+                })
+              }
+              className="bg-white rounded-md border-2 border-[#D8D0B9] p-4 shadow-royal hover:border-[#F1A91E] transition-all duration-300 group flex flex-col cursor-pointer hover:-translate-y-1"
+            >
+              <div className="relative aspect-[3/4] overflow-hidden rounded border border-[#D8D0B9]/60 bg-[#FAF7F0] mb-3">
+                <img
+                  src={assetUrl(BRAND_ASSETS.menuCardPage3)}
+                  alt="Official Menu Card Back Cover"
+                  className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-[#4A2366]/0 group-hover:bg-[#4A2366]/20 transition-colors flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity px-3 py-1.5 bg-[#4A2366] text-[#F1A91E] text-[11px] font-trajan font-bold uppercase tracking-wider rounded shadow-md">
+                    Click to Zoom
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-between pt-1">
+                <span className="font-trajan text-[11px] font-bold uppercase text-[#692C90] tracking-wider">
+                  Menu Card &middot; Back Cover
+                </span>
+                <span className="text-[10px] font-semibold px-2 py-0.5 bg-[#4A2366] text-[#F1A91E] rounded-full">
+                  Heritage Seal
+                </span>
+              </div>
+              <p className="font-didot text-[17px] font-bold text-[#4A2366] mt-1">
+                &ldquo;Where Tradition Meets Taste&rdquo;
+              </p>
+              <p className="text-[12px] text-[#2B2B2B]/70 mt-0.5">
+                Official contact coordinates: +91 9827286535 &middot; royalcaterersindia.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 6. GALLERY PREVIEW — Real Event Photography */}
       <section className="w-full bg-[#F6F1E6] py-20 lg:py-28 border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
@@ -546,6 +751,24 @@ export const HomePage: React.FC = () => {
 
       {/* 7. FINAL INVITATION CTA */}
       <section className="w-full bg-[#4A2366] text-white py-20 lg:py-28 relative overflow-hidden">
+        {/* Repeating Gold Brocade Pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.045] pointer-events-none bg-repeat"
+          style={{
+            backgroundImage: `url(${assetUrl(BRAND_ASSETS.patternTileGold)})`,
+            backgroundSize: '95px 95px',
+          }}
+        />
+
+        {/* Floating Rangoli Mandala Accent */}
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 opacity-[0.06] pointer-events-none select-none">
+          <img
+            src={assetUrl(BRAND_ASSETS.rangoliGold)}
+            alt="Royal Rangoli"
+            className="w-full h-full object-contain"
+          />
+        </div>
+
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center relative z-10">
           <div className="w-16 h-16 rounded-full bg-[#F1A91E] text-[#2D133E] flex items-center justify-center p-3 mb-4 shadow-xl">
             <img
@@ -597,6 +820,58 @@ export const HomePage: React.FC = () => {
         onNext={nextVideo}
         onPrev={prevVideo}
       />
+      {/* Menu Card Lightbox Modal */}
+      {selectedCard && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-6 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setSelectedCard(null)}
+        >
+          <div
+            className="relative max-w-2xl w-full bg-[#FAF7F0] rounded-lg border-2 border-[#F1A91E] p-4 sm:p-6 shadow-2xl flex flex-col max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-[#D8D0B9]">
+              <div>
+                <span className="font-trajan text-[10px] font-bold uppercase tracking-widest text-[#692C90] block">
+                  OFFICIAL ROYAL CATERERS INDIA STATIONERY
+                </span>
+                <h3 className="font-didot text-[20px] font-bold text-[#4A2366]">
+                  {selectedCard.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedCard(null)}
+                aria-label="Close dialog"
+                className="w-9 h-9 rounded-full bg-[#4A2366] text-white hover:bg-[#692C90] flex items-center justify-center text-lg font-bold transition-colors"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="my-4 flex justify-center bg-white rounded border border-[#D8D0B9] p-3 overflow-hidden max-h-[62vh]">
+              <img
+                src={selectedCard.src}
+                alt={selectedCard.title}
+                className="max-h-[58vh] w-auto object-contain rounded shadow-sm"
+              />
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 text-[12px] text-[#2B2B2B]/80">
+              <p className="italic">{selectedCard.subtitle}</p>
+              <a
+                href={assetUrl(BRAND_ASSETS.menuPdf)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#4A2366] text-[#F1A91E] rounded font-trajan font-bold text-[11px] uppercase tracking-wider hover:bg-[#692C90] transition-colors"
+              >
+                <span>Download Full Menu PDF</span>
+                <span>&darr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

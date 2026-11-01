@@ -35,6 +35,7 @@ const CLIENT_SIGNATURE_MENU_ITEMS = [
 export const MenuPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [pdfModalOpen, setPdfModalOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<{ src: string; title: string; subtitle: string } | null>(null);
 
   const visibleCategories: MenuCategoryData[] =
     selectedCategory === 'all'
@@ -54,7 +55,24 @@ export const MenuPage: React.FC = () => {
   return (
     <div className="flex flex-col w-full bg-[#F6F1E6] text-[#2B2B2B]">
       {/* 1. Header */}
-      <section className="w-full bg-[#F6F1E6] pt-10 pb-12 lg:py-20 border-b border-[#D8D0B9]">
+      <section className="w-full bg-[#F6F1E6] pt-10 pb-12 lg:py-20 border-b border-[#D8D0B9] relative overflow-hidden">
+        {/* Seamless Textile Pattern Background */}
+        <div
+          className="absolute inset-0 opacity-[0.035] pointer-events-none bg-repeat"
+          style={{
+            backgroundImage: `url(${assetUrl(BRAND_ASSETS.patternTilePurple)})`,
+            backgroundSize: '95px 95px',
+          }}
+        />
+
+        {/* Rotating Rangoli Mandala Watermark */}
+        <div className="absolute -top-32 -right-32 sm:-top-40 sm:-right-40 w-[500px] h-[500px] sm:w-[650px] sm:h-[650px] opacity-[0.045] pointer-events-none select-none animate-spin-slow">
+          <img
+            src={assetUrl(BRAND_ASSETS.rangoliPurple)}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div className="max-w-2xl">
@@ -76,7 +94,16 @@ export const MenuPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3.5 shrink-0">
+            <div className="flex flex-wrap items-center gap-3.5 shrink-0 relative z-10">
+              <a
+                href={assetUrl(BRAND_ASSETS.menuPdf)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3.5 btn-royal-outline text-[12px] font-bold uppercase tracking-[0.14em] rounded-sm shadow-sm"
+              >
+                <span>Download Menu PDF (920 KB)</span>
+                <span aria-hidden="true">&darr;</span>
+              </a>
               <a
                 href={BUSINESS_INFO.whatsappHref}
                 target="_blank"
@@ -146,19 +173,142 @@ export const MenuPage: React.FC = () => {
               ))}
             </div>
 
+            {/* Agency Printed Stationery Showcase */}
+            <div className="mt-8 pt-8 border-t border-[#D8D0B9]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+                <div>
+                  <span className="font-trajan text-[11px] font-bold uppercase text-[#692C90] tracking-wider block">
+                    OFFICIAL CLIENT ARCHIVES &middot; PHYSICAL BANQUET STATIONERY
+                  </span>
+                  <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mt-0.5">
+                    Official Printed Menu Cards (As Designed by Agency)
+                  </h3>
+                </div>
+                <a
+                  href={assetUrl(BRAND_ASSETS.menuPdf)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-[#4A2366] text-[#F1A91E] rounded text-[11px] font-trajan font-bold uppercase tracking-wider hover:bg-[#692C90] transition-colors self-start sm:self-auto shadow-sm"
+                >
+                  <span>Open Full PDF Document</span>
+                  <span>&darr;</span>
+                </a>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                {/* Front Cover Card */}
+                <div
+                  onClick={() =>
+                    setSelectedCard({
+                      src: assetUrl(BRAND_ASSETS.menuCardPage1),
+                      title: 'Banquet Menu Front Cover',
+                      subtitle: 'Regal Arch Motif with Gold Crown Seal & Imperial Typemark',
+                    })
+                  }
+                  className="bg-[#FAF7F0] rounded border border-[#D8D0B9] p-3 hover:border-[#F1A91E] transition-all duration-300 cursor-pointer group flex flex-col items-center"
+                >
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded bg-white border border-[#D8D0B9]/60 mb-2">
+                    <img
+                      src={assetUrl(BRAND_ASSETS.menuCardPage1)}
+                      alt="Front Cover Card"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-[#4A2366]/0 group-hover:bg-[#4A2366]/15 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity px-2.5 py-1 bg-[#4A2366] text-[#F1A91E] text-[10px] font-trajan font-bold uppercase tracking-wider rounded">
+                        Zoom View
+                      </span>
+                    </div>
+                  </div>
+                  <span className="font-trajan text-[10.5px] font-bold uppercase text-[#692C90] tracking-wider text-center">
+                    Front Cover &middot; Arch
+                  </span>
+                </div>
+
+                {/* Inside Spread Card */}
+                <div
+                  onClick={() =>
+                    setSelectedCard({
+                      src: assetUrl(BRAND_ASSETS.menuCardPage2),
+                      title: 'Official 8-Course Inside Spread',
+                      subtitle: 'Full 8-Course Banquet Set with 1960 Heritage Cloche Crest',
+                    })
+                  }
+                  className="bg-[#FAF7F0] rounded border-2 border-[#F1A91E]/80 p-3 hover:border-[#692C90] transition-all duration-300 cursor-pointer group flex flex-col items-center relative"
+                >
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded bg-white border border-[#D8D0B9]/60 mb-2">
+                    <img
+                      src={assetUrl(BRAND_ASSETS.menuCardPage2)}
+                      alt="Inside Spread Card"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-[#4A2366]/0 group-hover:bg-[#4A2366]/15 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity px-2.5 py-1 bg-[#4A2366] text-[#F1A91E] text-[10px] font-trajan font-bold uppercase tracking-wider rounded">
+                        Zoom View
+                      </span>
+                    </div>
+                  </div>
+                  <span className="font-trajan text-[10.5px] font-bold uppercase text-[#692C90] tracking-wider text-center">
+                    Inside Spread &middot; 8 Courses
+                  </span>
+                </div>
+
+                {/* Back Cover Card */}
+                <div
+                  onClick={() =>
+                    setSelectedCard({
+                      src: assetUrl(BRAND_ASSETS.menuCardPage3),
+                      title: 'Banquet Menu Back Cover',
+                      subtitle: 'Where Tradition Meets Taste · Serving Celebrations Since 1960',
+                    })
+                  }
+                  className="bg-[#FAF7F0] rounded border border-[#D8D0B9] p-3 hover:border-[#F1A91E] transition-all duration-300 cursor-pointer group flex flex-col items-center"
+                >
+                  <div className="relative aspect-[3/4] w-full overflow-hidden rounded bg-white border border-[#D8D0B9]/60 mb-2">
+                    <img
+                      src={assetUrl(BRAND_ASSETS.menuCardPage3)}
+                      alt="Back Cover Card"
+                      className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-[#4A2366]/0 group-hover:bg-[#4A2366]/15 transition-colors flex items-center justify-center">
+                      <span className="opacity-0 group-hover:opacity-100 transition-opacity px-2.5 py-1 bg-[#4A2366] text-[#F1A91E] text-[10px] font-trajan font-bold uppercase tracking-wider rounded">
+                        Zoom View
+                      </span>
+                    </div>
+                  </div>
+                  <span className="font-trajan text-[10.5px] font-bold uppercase text-[#692C90] tracking-wider text-center">
+                    Back Cover &middot; Est. 1960
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <div className="pt-6 mt-6 border-t border-[#D8D0B9]/60 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-[#2B2B2B]/80 font-medium">
               <p>
                 Ph: <strong className="text-[#4A2366]">{BUSINESS_INFO.phoneDisplay}</strong> &middot;{' '}
                 {BUSINESS_INFO.domain}
               </p>
-              <button
-                type="button"
-                onClick={() => setPdfModalOpen(true)}
-                className="inline-flex items-center gap-1.5 text-[#692C90] font-bold hover:underline"
-              >
-                <span>Print &middot; Download Course Summary</span>
-                <span>&rarr;</span>
-              </button>
+              <div className="flex items-center gap-4">
+                <a
+                  href={assetUrl(BRAND_ASSETS.menuPdf)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[#692C90] font-bold hover:underline"
+                >
+                  <span>Download Official Menu PDF</span>
+                  <span>&darr;</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setPdfModalOpen(true)}
+                  className="inline-flex items-center gap-1.5 text-[#692C90] font-bold hover:underline"
+                >
+                  <span>Quick Summary</span>
+                  <span>&rarr;</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -364,6 +514,58 @@ export const MenuPage: React.FC = () => {
               >
                 Request Custom Menu
               </Link>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Menu Card Lightbox Modal */}
+      {selectedCard && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-6 backdrop-blur-sm animate-fadeIn"
+          onClick={() => setSelectedCard(null)}
+        >
+          <div
+            className="relative max-w-2xl w-full bg-[#FAF7F0] rounded-lg border-2 border-[#F1A91E] p-4 sm:p-6 shadow-2xl flex flex-col max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between pb-3 border-b border-[#D8D0B9]">
+              <div>
+                <span className="font-trajan text-[10px] font-bold uppercase tracking-widest text-[#692C90] block">
+                  OFFICIAL ROYAL CATERERS INDIA STATIONERY
+                </span>
+                <h3 className="font-didot text-[20px] font-bold text-[#4A2366]">
+                  {selectedCard.title}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedCard(null)}
+                aria-label="Close dialog"
+                className="w-9 h-9 rounded-full bg-[#4A2366] text-white hover:bg-[#692C90] flex items-center justify-center text-lg font-bold transition-colors"
+              >
+                &times;
+              </button>
+            </div>
+            <div className="my-4 flex justify-center bg-white rounded border border-[#D8D0B9] p-3 overflow-hidden max-h-[62vh]">
+              <img
+                src={selectedCard.src}
+                alt={selectedCard.title}
+                className="max-h-[58vh] w-auto object-contain rounded shadow-sm"
+              />
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 text-[12px] text-[#2B2B2B]/80">
+              <p className="italic">{selectedCard.subtitle}</p>
+              <a
+                href={assetUrl(BRAND_ASSETS.menuPdf)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-2 bg-[#4A2366] text-[#F1A91E] rounded font-trajan font-bold text-[11px] uppercase tracking-wider hover:bg-[#692C90] transition-colors"
+              >
+                <span>Download Full Menu PDF</span>
+                <span>&darr;</span>
+              </a>
             </div>
           </div>
         </div>
