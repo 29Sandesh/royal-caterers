@@ -549,7 +549,7 @@ export const HomePage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-12 text-center flex flex-col items-center relative z-10">
           <div className="w-16 h-16 rounded-full bg-[#F1A91E] text-[#2D133E] flex items-center justify-center p-3 mb-4 shadow-xl">
             <img
-              src={assetUrl(BRAND_ASSETS.logomark)}
+              src={assetUrl(BRAND_ASSETS.logomarkTight)}
               alt="RCI Crest"
               className="w-full h-full object-contain"
             />

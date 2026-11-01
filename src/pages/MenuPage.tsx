@@ -106,7 +106,7 @@ export const MenuPage: React.FC = () => {
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 flex items-center justify-center shrink-0">
                   <img
-                    src={assetUrl(BRAND_ASSETS.logomarkWhite)}
+                    src={assetUrl(BRAND_ASSETS.logomarkWhiteTight)}
                     alt="RCI Logo"
                     className="w-full h-full object-contain"
                   />
