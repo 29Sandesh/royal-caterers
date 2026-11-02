@@ -131,10 +131,10 @@ export const MenuPage: React.FC = () => {
           <div className="bg-white border-2 border-[#F1A91E] rounded-md p-6 sm:p-8 lg:p-10 shadow-royal relative overflow-hidden">
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-[#D8D0B9]">
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 flex items-center justify-center shrink-0">
+                <div className="w-16 h-16 flex items-center justify-center shrink-0 filter drop-shadow-md">
                   <img
-                    src={assetUrl(BRAND_ASSETS.logomarkWhiteTight)}
-                    alt="RCI Logo"
+                    src={assetUrl(BRAND_ASSETS.roundLogoTransparent)}
+                    alt="Royal Caterers India Official Logo"
                     className="w-full h-full object-contain"
                   />
                 </div>

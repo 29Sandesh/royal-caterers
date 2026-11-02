@@ -163,11 +163,11 @@ export const HomePage: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
 
-                {/* Floating Official Heritage Seal */}
-                <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#4A2366]/95 border-2 border-[#F1A91E] p-1 shadow-2xl flex items-center justify-center animate-fadeUp group-hover:scale-105 transition-transform duration-300">
+                {/* Floating Official Main Round Logo */}
+                <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center animate-fadeUp group-hover:scale-105 transition-transform duration-300 filter drop-shadow-2xl">
                   <img
-                    src={assetUrl(BRAND_ASSETS.sealConcept3Gold)}
-                    alt="Official Royal Caterers Heritage Seal"
+                    src={assetUrl(BRAND_ASSETS.roundLogoTransparent)}
+                    alt="Royal Caterers India Official Logo"
                     className="w-full h-full object-contain"
                   />
                 </div>
@@ -217,11 +217,11 @@ export const HomePage: React.FC = () => {
                   : 'border-[#D8D0B9]/60 bg-white hover:border-[#692C90]/50'
               }`}
             >
-              <div className="w-24 h-24 rounded-full bg-[#4A2366] border-2 border-[#F1A91E] p-2 mb-4 shadow-md flex items-center justify-center">
+              <div className="w-24 h-24 mb-4 flex items-center justify-center filter drop-shadow-md">
                 <img
-                  src={assetUrl(BRAND_ASSETS.emblemClocheGold)}
-                  alt="Cloche Emblem"
-                  className="w-full h-full object-contain rounded-full"
+                  src={assetUrl(BRAND_ASSETS.roundLogoTransparent)}
+                  alt="Royal Caterers India Official Logo"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">

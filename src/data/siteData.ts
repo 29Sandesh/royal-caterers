@@ -49,6 +49,9 @@ export const NAV_LINKS: NavLinkItem[] = [
 
 
 export const BRAND_ASSETS = {
+  mainRoundLogo: '/brand/RCI_round_transparent.png',
+  roundLogoTransparent: '/brand/RCI_round_transparent.png',
+  roundLogoTransparentWebp: '/brand/rci_round_transparent.webp',
 
   mainLogo: '/brand/RCI MAIN LOGO.svg',
 

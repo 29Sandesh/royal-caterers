@@ -85,11 +85,11 @@ export const AboutPage: React.FC = () => {
               alt="Royal Caterers India grand banquet setup with illuminated carved food stalls."
               className="w-full h-full object-cover"
             />
-            <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#4A2366]/90 border-2 border-[#F1A91E] p-2 flex items-center justify-center shadow-lg">
+            <div className="absolute top-4 right-4 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center shadow-2xl filter drop-shadow-xl hover:scale-105 transition-transform duration-300">
               <img
-                src={assetUrl(BRAND_ASSETS.emblemClocheGold)}
-                alt="RCI 1960"
-                className="w-full h-full object-contain rounded-full"
+                src={assetUrl(BRAND_ASSETS.roundLogoTransparent)}
+                alt="Royal Caterers India Official Logo"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
