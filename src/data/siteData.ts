@@ -1392,25 +1392,6 @@ export const GALLERY_ITEMS: GalleryVignette[] = [
     image: BRAND_ASSETS.menuCardPage3,
     alt: 'Official printed banquet menu back cover with tagline Where Tradition Meets Taste.',
   },
-  {
-    id: 21,
-    title: 'Brand Identity System · Color Palette & Harmony',
-    categoryLabel: 'Brand Architecture · Imperial Palette',
-    categories: ['stationery'],
-    colSpanClass: 'md:col-span-6',
-    aspectClass: 'aspect-[4/3]',
-    image: BRAND_ASSETS.brandGuidelineColors,
-    alt: 'Official brand guidelines color palette sheet with hex values and proportions.',
-  },
-  {
-    id: 22,
-    title: 'Sacred Rangoli Mandala & Brocade Pattern System',
-    categoryLabel: 'Brand Architecture · Indian Geometry',
-    categories: ['stationery'],
-    colSpanClass: 'md:col-span-6',
-    aspectClass: 'aspect-[4/3]',
-    image: BRAND_ASSETS.brandGuidelineMandala,
-    alt: 'Sacred Indian 16-point Rangoli Mandala geometry and seamless repeating brocade pattern.',
-  },
 ];
+
 

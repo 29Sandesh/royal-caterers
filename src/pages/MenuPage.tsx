@@ -178,10 +178,10 @@ export const MenuPage: React.FC = () => {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
                 <div>
                   <span className="font-trajan text-[11px] font-bold uppercase text-[#692C90] tracking-wider block">
-                    OFFICIAL CLIENT ARCHIVES &middot; PHYSICAL BANQUET STATIONERY
+                    ROYAL BANQUET PRESENTATION &middot; EST. 1960
                   </span>
                   <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mt-0.5">
-                    Official Printed Menu Cards (As Designed by Agency)
+                    Signature Printed Banquet Menu Presentation
                   </h3>
                 </div>
                 <a

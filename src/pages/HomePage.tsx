@@ -191,19 +191,19 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. THE 3 BRAND CRESTS & LEGACY (From Official Brand Guidelines) */}
+      {/* 2. THE THREE PILLARS OF OUR ROYAL BANQUETING CRAFT */}
       <section className="w-full bg-[#FFFFFF] py-14 lg:py-16 border-b border-[#D8D0B9]">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.22em] text-[#692C90] block mb-1">
-              THE ROYAL CATERERS BRAND IDENTITY
+              OUR CULINARY HERITAGE &middot; SINCE 1960
             </span>
             <h2 className="font-didot text-[28px] sm:text-[36px] text-[#4A2366] font-bold">
-              Three Royal Crests &middot; One Enduring Legacy.
+              Three Royal Pillars &middot; One Enduring Tradition.
             </h2>
             <p className="font-sans text-[14.5px] text-[#2B2B2B]/80 mt-2">
-              Every emblem reflects our dedication since 1960: from culinary dome service to royal
-              celebrations and authentic deg handis.
+              Every celebration is guided by our founding disciplines: gourmet dome service, grand wedding
+              celebrations, and slow-cooked Malwi authentic flavors in pure desi ghee.
             </p>
           </div>
 
@@ -225,7 +225,7 @@ export const HomePage: React.FC = () => {
                 />
               </div>
               <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">
-                Official Crest 01
+                Culinary Pillar 01
               </span>
               <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mb-2">
                 Imperial Cloche &middot; Taste of Life
@@ -253,7 +253,7 @@ export const HomePage: React.FC = () => {
                 />
               </div>
               <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">
-                Official Crest 02
+                Culinary Pillar 02
               </span>
               <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mb-2">
                 The Regal Crown &middot; Celebrations
@@ -281,7 +281,7 @@ export const HomePage: React.FC = () => {
                 />
               </div>
               <span className="font-trajan text-[11px] font-bold uppercase tracking-widest text-[#692C90] mb-1">
-                Official Crest 03
+                Culinary Pillar 03
               </span>
               <h3 className="font-didot text-[20px] font-bold text-[#4A2366] mb-2">
                 Authentic Handi &middot; Desi Ghee
@@ -511,17 +511,17 @@ export const HomePage: React.FC = () => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14">
             <div className="max-w-2xl">
               <span className="font-trajan text-[11px] font-bold uppercase tracking-[0.22em] text-[#692C90] block mb-1">
-                ROYAL CATERERS INDIA &middot; OFFICIAL STATIONERY &middot; EST. 1960
+                ROYAL CATERERS INDIA &middot; BANQUET STATIONERY &middot; EST. 1960
               </span>
               <p className="font-cursive text-[32px] text-[#692C90] mb-0.5">
-                Authentic Printed Banquet Cards
+                Handcrafted Banquet Menus
               </p>
               <h2 className="font-didot text-[30px] sm:text-[42px] text-[#4A2366] font-bold leading-tight">
-                Designed for Royal Indian Weddings &amp; Galas.
+                Curated for Royal Indian Weddings &amp; Galas.
               </h2>
               <p className="font-sans text-[15px] text-[#2B2B2B]/80 mt-2.5 leading-relaxed">
-                Inspected and reproduced directly from our client design archives. Featuring our authentic
-                ornate Mughal arch framing, 8-course banquet course curation, and 1960 cloche crest.
+                Experience our signature banquet presentation. Featuring ornate Mughal arch framing,
+                our authentic 8-course banquet course curation, and our 1960 royal cloche crest.
               </p>
             </div>
 
